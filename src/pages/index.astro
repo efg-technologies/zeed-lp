@@ -2,15 +2,19 @@
 import Base from "../layouts/Base.astro";
 import Hero from "../components/Hero.astro";
 import Features from "../components/Features.astro";
+import Compare from "../components/Compare.astro";
+import Roadmap from "../components/Roadmap.astro";
 import Install from "../components/Install.astro";
 import Footer from "../components/Footer.astro";
 ---
 <Base
-  title="Zeed — 人と考え、実行する AI ブラウザ"
-  description="Chromium ベースの AI ブラウザ。タブと文脈を憶え、一緒に考え、必要なら自律的に操作まで完遂。個人データは Zeed 社からは見えない構造。"
+  title="Zeed — あなたと一緒に考えはじめるブラウザ"
+  description="Chromium ベースのオープンソース AI ブラウザ。タブと文脈を憶え、人と考え、必要なら自律的に操作まで完遂する。個人データは Zeed 社からは見えない構造。BYO OpenRouter key、MPL-2.0。"
 >
   <Hero />
   <Features />
+  <Compare />
+  <Roadmap />
   <Install />
   <Footer />
 </Base>

@@ -1,0 +1,92 @@
+---
+const rows = [
+  { label: "Linux native", zeed: "✓", atlas: "—", comet: "—", fellou: "—", opera: "◯" },
+  { label: "BYO LLM (好きなモデル)", zeed: "✓", atlas: "—", comet: "—", fellou: "—", opera: "—" },
+  { label: "端末内データ (構造的)", zeed: "✓", atlas: "△", comet: "—", fellou: "△", opera: "△" },
+  { label: "オープンソース", zeed: "✓ MPL-2.0", atlas: "—", comet: "—", fellou: "部分", opera: "—" },
+  { label: "MCP 対応 (Claude/Cursor 資産)", zeed: "✓", atlas: "—", comet: "—", fellou: "—", opera: "—" },
+  { label: "月額", zeed: "$0", atlas: "$20 (Plus)", comet: "$0-20", fellou: "$0+", opera: "sub" },
+];
+---
+<section id="compare" class="px-6 py-24 md:py-32" style="background: var(--color-zeed-panel)">
+  <div class="mx-auto max-w-5xl">
+    <p
+      class="mb-3 text-center text-xs uppercase tracking-[0.2em]"
+      style="color: var(--color-zeed-glow)"
+    >
+      他の AI ブラウザと比べて
+    </p>
+    <h2 class="mb-4 text-center text-4xl md:text-5xl">
+      差別化は、思想から始まる。
+    </h2>
+    <p
+      class="mb-12 text-center text-sm md:text-base"
+      style="color: var(--color-zeed-muted)"
+    >
+      Atlas / Comet / Fellou / Opera Neon は、全て Mac/Win から始まり、すべてクラウドに依存する。
+      <br class="hidden md:inline" />Zeed は、Linux から始まり、データを端末から出さない。
+    </p>
+
+    <div class="overflow-x-auto">
+      <table
+        class="w-full border-collapse overflow-hidden rounded-2xl text-sm"
+        style="background: var(--color-zeed-bg)"
+      >
+        <thead>
+          <tr
+            class="border-b"
+            style="border-color: var(--color-zeed-border); background: var(--color-zeed-panel-2)"
+          >
+            <th class="px-4 py-4 text-left font-medium" style="color: var(--color-zeed-muted)">
+              機能 / ポリシー
+            </th>
+            <th
+              class="px-4 py-4 text-center font-bold"
+              style="color: var(--color-zeed-glow)"
+            >
+              Zeed
+            </th>
+            <th class="px-4 py-4 text-center" style="color: var(--color-zeed-muted)">Atlas</th>
+            <th class="px-4 py-4 text-center" style="color: var(--color-zeed-muted)">Comet</th>
+            <th class="px-4 py-4 text-center" style="color: var(--color-zeed-muted)">Fellou</th>
+            <th class="px-4 py-4 text-center" style="color: var(--color-zeed-muted)">Opera Neon</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row) => (
+            <tr class="border-b" style="border-color: var(--color-zeed-border)">
+              <td class="px-4 py-3">{row.label}</td>
+              <td
+                class="px-4 py-3 text-center font-mono font-bold"
+                style="color: var(--color-zeed-glow)"
+              >
+                {row.zeed}
+              </td>
+              <td class="px-4 py-3 text-center font-mono" style="color: var(--color-zeed-muted)">
+                {row.atlas}
+              </td>
+              <td class="px-4 py-3 text-center font-mono" style="color: var(--color-zeed-muted)">
+                {row.comet}
+              </td>
+              <td class="px-4 py-3 text-center font-mono" style="color: var(--color-zeed-muted)">
+                {row.fellou}
+              </td>
+              <td class="px-4 py-3 text-center font-mono" style="color: var(--color-zeed-muted)">
+                {row.opera}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <p
+      class="mt-8 text-center text-xs"
+      style="color: var(--color-zeed-muted)"
+    >
+      ✓ = 完全対応 / ◯ = 限定的 / △ = ポリシーで謳うが構造担保なし / — = 非対応
+      <br />
+      <span class="mt-2 inline-block">比較表は各社の公開情報 (2026-04 時点) に基づく、独自調査</span>
+    </p>
+  </div>
+</section>
