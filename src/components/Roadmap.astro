@@ -1,0 +1,93 @@
+---
+const phases = [
+  {
+    status: "now",
+    label: "Phase 1 — Linux (AUR + .deb)",
+    detail: "機能完成。Agent / Memory / Context Map / RSS / Tasks / MCP / telemetry。v.46 配布中",
+  },
+  {
+    status: "next",
+    label: "Phase 2 — 危険対策 + Ubuntu deb / Mac",
+    detail: "prompt injection 防御、private mode 強化、sensitive action ゲート、Ubuntu APT repo、macOS notarize",
+  },
+  {
+    status: "plan",
+    label: "Phase 3 — Mac リリース",
+    detail: "universal binary (arm64 + x86_64) + Developer ID 署名 + notarization。4 週ロードマップ",
+  },
+  {
+    status: "plan",
+    label: "Phase 4 — i18n (en / ja)",
+    detail: "UI 辞書・Privacy / ToS 英訳、LP 2 言語切替。Mac リリース後に US/EU 取り込み",
+  },
+  {
+    status: "later",
+    label: "Phase 5 — iPhone (Expo)",
+    detail: "trigger 待機: Comet iOS DAU >50k または Mac 版 30 日継続 300 user",
+  },
+  {
+    status: "later",
+    label: "Phase 6+ — クラウド同期 / アフィリエイト / 課金",
+    detail: "PowerSync + Supabase で 3 端末同期、LLM コストは BYO のまま",
+  },
+];
+
+const statusColor = {
+  now: "#4ade80",
+  next: "#fb923c",
+  plan: "#a78bfa",
+  later: "#6b7280",
+};
+
+const statusLabel = {
+  now: "配布中",
+  next: "次",
+  plan: "計画",
+  later: "将来",
+};
+---
+<section id="roadmap" class="px-6 py-24 md:py-32">
+  <div class="mx-auto max-w-4xl">
+    <p
+      class="mb-3 text-center text-xs uppercase tracking-[0.2em]"
+      style="color: var(--color-zeed-glow)"
+    >
+      Roadmap
+    </p>
+    <h2 class="mb-4 text-center text-4xl md:text-5xl">
+      何を、いつ。
+    </h2>
+    <p
+      class="mb-12 text-center text-sm md:text-base"
+      style="color: var(--color-zeed-muted)"
+    >
+      Zeed は 8 フェーズで積み上げる。今は Linux。次は Mac。全部 spec に書いてある。
+    </p>
+
+    <ol class="space-y-3">
+      {phases.map((p) => (
+        <li
+          class="flex items-start gap-4 rounded-2xl border p-5 transition"
+          style={`border-color: var(--color-zeed-border); background: var(--color-zeed-panel)`}
+        >
+          <div
+            class="mt-0.5 flex-shrink-0 rounded-md px-2.5 py-0.5 text-[10px] font-mono font-bold uppercase"
+            style={`background: ${statusColor[p.status]}22; color: ${statusColor[p.status]}; border: 1px solid ${statusColor[p.status]}44`}
+          >
+            {statusLabel[p.status]}
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="mb-1 text-base font-semibold">{p.label}</div>
+            <div class="text-xs leading-relaxed" style="color: var(--color-zeed-muted)">
+              {p.detail}
+            </div>
+          </div>
+        </li>
+      ))}
+    </ol>
+
+    <p class="mt-8 text-center text-sm" style="color: var(--color-zeed-muted)">
+      spec 原本: <a href="https://github.com/efg-technologies/lab/blob/main/plans/orion/spec.md">plans/orion/spec.md</a>
+    </p>
+  </div>
+</section>

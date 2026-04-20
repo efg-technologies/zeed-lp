@@ -1,55 +1,78 @@
 ---
 const features = [
   {
-    title: "Data sovereignty",
-    tag: "構造的プライバシー",
-    desc: "Memory・履歴・Bookmark は端末内だけに保存。同期オプトイン時も RLS + E2E 暗号化 (計画) で Zeed 社から見えない。計測は 2 イベントのみ、opt-in default OFF。",
+    tag: "Act",
+    title: "ブラウザが、手を動かす",
+    lead: "質問に答えるだけの AI は、もう要らない。Zeed はサイドバーから自律的にタブを開き、検索し、フォームを埋め、目的を完遂する。",
     points: [
-      "個人データは端末内 localStorage / SQLite のみ",
-      "クラウド同期は Phase 6 以降オプトイン、BYO encryption key",
-      "telemetry は crash + agent_run の 2 件、allowlist で個人データ不可",
+      "3-mode routing: Auto / Ask / Search を送信ごとに切替",
+      "危険な操作 (購入・送信・削除) は必ずユーザー承認を挟む",
+      "プロンプト注入に <untrusted> タグで構造的防御",
     ],
   },
   {
-    title: "NotebookLM × Cursor",
-    tag: "人と考える",
-    desc: "タブ・記憶・トピックを 5 層 Context Map で可視化。ハイライトは「あなたの意図」で動的に変わる。チャットはタブ / Memory / Topic を文脈として grounded 応答。",
+    tag: "Think with you",
+    title: "タブが、頭を持つ",
+    lead: "Chrome の 100 タブは、あなたの頭の中。Zeed はタブ・メモ・ユーザー意図を 5 層の Context Map にして、閲覧中の頁に何が関連するか描き続ける。",
     points: [
-      "タブ・メモリ・トピックの関係を force-directed graph で可視化",
-      "ユーザー意図に応じて重要箇所を動的にハイライト",
-      "Context Map を grounding source にして精度の高い応答",
+      "5 層: Profile → TabGroup → Tab → Topic → Memory",
+      "ハイライトはあなたの memory と意味が近い文を動的選択 (Phase 2)",
+      "RSS・Tasks・Bookmark・Marks を統合した同じ頭脳",
     ],
   },
   {
-    title: "BYO LLM",
-    tag: "構造的に安い",
-    desc: "OpenRouter に直接払う BYO 方式。Zeed 側に LLM マージンは乗らない。Atlas / Dia / Perplexity の $20/月に対し Pro tier $10/月、Local tier は $0。",
+    tag: "Stay private",
+    title: "Zeed から、見えない",
+    lead: "他社の AI ブラウザはクラウドに送信する。Zeed は構造で送れない。Memory・履歴・Bookmark は端末内 localStorage のみ、計測は 2 イベントの allowlist、opt-in 既定 OFF。",
     points: [
-      "OpenRouter key 持参でロック気にせず好きなモデルが使える",
-      "Agent の tool 拡張は MCP で他エコシステム (Claude / Cursor) と相互運用",
-      "重利用でも BYO で OpenRouter 直払いがユーザーに常に最安",
+      "no_personal_data.test.ts がビルドごとに allowlist 外を拒否",
+      "プライベートモード: AI 層完全オフ、通常ブラウザとして使える",
+      "MPL-2.0 完全オープンソース、監査可能",
+    ],
+  },
+  {
+    tag: "Your LLM",
+    title: "あなたの鍵、あなたの料金",
+    lead: "他社は in-house LLM 固定で月 $20。Zeed は OpenRouter API key を貼るだけで GPT / Claude / Gemini / OSS モデル、どれでも走る。料金はあなたが直接プロバイダに払う、Zeed は仲介しない。",
+    points: [
+      "Zeed は LLM コストに一切関与しない。重利用でも BYO が最安",
+      "MCP Connector で Claude Desktop / Cursor / Zed の tool 資産も接続",
+      "Bearer token 対応済、OAuth loopback は Phase 2.2 で追加予定",
     ],
   },
 ];
 ---
 <section id="features" class="px-6 py-24 md:py-32">
   <div class="mx-auto max-w-5xl">
+    <p
+      class="mb-3 text-center text-xs uppercase tracking-[0.2em]"
+      style="color: var(--color-zeed-glow)"
+    >
+      4 つの芯
+    </p>
     <h2 class="mb-16 text-center text-4xl md:text-5xl">
-      Zeed が他と違う <span style="color: var(--color-zeed-glow)">3 つ</span>
+      <span style="color: var(--color-zeed-muted)">ブラウザが、</span>
+      <br class="md:hidden" />考える / 動く / 隠す / 任せる。
     </h2>
 
-    <div class="grid gap-8 md:grid-cols-3">
+    <div class="grid gap-5 md:grid-cols-2">
       {features.map((f) => (
         <div
           class="rounded-2xl border p-8 transition hover:border-transparent"
           style="border-color: var(--color-zeed-border); background: var(--color-zeed-panel)"
         >
-          <p class="mb-2 text-xs uppercase tracking-wider" style="color: var(--color-zeed-glow)">
+          <p
+            class="mb-3 text-xs font-mono uppercase tracking-wider"
+            style="color: var(--color-zeed-glow)"
+          >
             {f.tag}
           </p>
           <h3 class="mb-4 text-2xl">{f.title}</h3>
-          <p class="mb-6 text-sm leading-relaxed" style="color: var(--color-zeed-muted)">
-            {f.desc}
+          <p
+            class="mb-6 text-sm leading-relaxed"
+            style="color: var(--color-zeed-muted)"
+          >
+            {f.lead}
           </p>
           <ul class="space-y-2 text-sm">
             {f.points.map((p) => (
