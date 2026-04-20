@@ -4,20 +4,34 @@
   <div class="mx-auto max-w-3xl">
     <h2 class="mb-4 text-center text-4xl md:text-5xl">Linux にインストール</h2>
     <p class="mb-12 text-center" style="color: var(--color-zeed-muted)">
-      現在 Arch / Arch 派生のみ対応。Mac / iPhone はロードマップ上。
+      Arch / Ubuntu / Debian 対応。Mac は近日、iOS はロードマップ上。
     </p>
+
+    <div
+      class="rounded-2xl border p-8 mb-6"
+      style="border-color: var(--color-zeed-border); background: var(--color-zeed-bg)"
+    >
+      <h3 class="mb-3 text-lg font-semibold">Arch (AUR)</h3>
+      <p class="mb-2 text-sm" style="color: var(--color-zeed-muted)">AUR helper (yay / paru):</p>
+      <pre class="mb-4"><code>yay -S zeed-bin</code></pre>
+
+      <p class="mb-2 text-sm" style="color: var(--color-zeed-muted)">手動 makepkg:</p>
+      <pre><code>git clone https://aur.archlinux.org/zeed-bin.git
+cd zeed-bin
+makepkg -si</code></pre>
+    </div>
 
     <div
       class="rounded-2xl border p-8"
       style="border-color: var(--color-zeed-border); background: var(--color-zeed-bg)"
     >
-      <p class="mb-2 text-sm" style="color: var(--color-zeed-muted)">AUR helper (yay / paru):</p>
-      <pre class="mb-6"><code>yay -S zeed-browser-bin</code></pre>
-
-      <p class="mb-2 text-sm" style="color: var(--color-zeed-muted)">あるいは手動 makepkg:</p>
-      <pre><code>git clone https://aur.archlinux.org/zeed-browser-bin.git
-cd zeed-browser-bin
-makepkg -si</code></pre>
+      <h3 class="mb-3 text-lg font-semibold">Ubuntu / Debian</h3>
+      <p class="mb-2 text-sm" style="color: var(--color-zeed-muted)">最新 release から .deb を取得してインストール:</p>
+      <pre class="mb-2"><code>curl -LO https://github.com/efg-technologies/zeed-browser-dist/releases/latest/download/zeed-browser_147.0.7727.55.46-1_amd64.deb
+sudo apt install ./zeed-browser_147.0.7727.55.46-1_amd64.deb</code></pre>
+      <p class="text-xs" style="color: var(--color-zeed-muted)">
+        GPG 署名付き APT repo (<code>apt-get install zeed-browser</code>) は準備中。
+      </p>
     </div>
 
     <p class="mt-8 text-center text-sm" style="color: var(--color-zeed-muted)">
