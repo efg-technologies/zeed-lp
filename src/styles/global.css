@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", "Noto Sans JP", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Zeed palette — same as browser chrome */
+  --color-zeed-bg:        #0F0F12;
+  --color-zeed-panel:     #1A1A1F;
+  --color-zeed-panel-2:   #22222A;
+  --color-zeed-border:    #2A2A34;
+  --color-zeed-text:      #E7E7EA;
+  --color-zeed-muted:     #9B9BA3;
+  --color-zeed-accent:    #5B21B6;
+  --color-zeed-accent-2:  #7C3AED;
+  --color-zeed-glow:      #8B5CF6;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--color-zeed-bg);
+    color: var(--color-zeed-text);
+  }
+  body {
+    font-family: var(--font-sans);
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+  :selection { background: var(--color-zeed-accent); color: #fff; }
+
+  h1, h2, h3, h4 { font-weight: 700; letter-spacing: -0.02em; }
+  code, pre { font-family: var(--font-mono); }
+  pre {
+    background: var(--color-zeed-panel);
+    border: 1px solid var(--color-zeed-border);
+    border-radius: 8px;
+    padding: 1rem;
+    overflow-x: auto;
+    font-size: 0.875rem;
+  }
+  a { color: var(--color-zeed-glow); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+}

@@ -1,0 +1,66 @@
+---
+const features = [
+  {
+    title: "Data sovereignty",
+    tag: "構造的プライバシー",
+    desc: "Memory・履歴・Bookmark は端末内だけに保存。同期オプトイン時も RLS + E2E 暗号化 (計画) で Zeed 社から見えない。計測は 2 イベントのみ、opt-in default OFF。",
+    points: [
+      "個人データは端末内 localStorage / SQLite のみ",
+      "クラウド同期は Phase 6 以降オプトイン、BYO encryption key",
+      "telemetry は crash + agent_run の 2 件、allowlist で個人データ不可",
+    ],
+  },
+  {
+    title: "NotebookLM × Cursor",
+    tag: "人と考える",
+    desc: "タブ・記憶・トピックを 5 層 Context Map で可視化。ハイライトは「あなたの意図」で動的に変わる。チャットはタブ / Memory / Topic を文脈として grounded 応答。",
+    points: [
+      "タブ・メモリ・トピックの関係を force-directed graph で可視化",
+      "ユーザー意図に応じて重要箇所を動的にハイライト",
+      "Context Map を grounding source にして精度の高い応答",
+    ],
+  },
+  {
+    title: "BYO LLM",
+    tag: "構造的に安い",
+    desc: "OpenRouter に直接払う BYO 方式。Zeed 側に LLM マージンは乗らない。Atlas / Dia / Perplexity の $20/月に対し Pro tier $10/月、Local tier は $0。",
+    points: [
+      "OpenRouter key 持参でロック気にせず好きなモデルが使える",
+      "Agent の tool 拡張は MCP で他エコシステム (Claude / Cursor) と相互運用",
+      "重利用でも BYO で OpenRouter 直払いがユーザーに常に最安",
+    ],
+  },
+];
+---
+<section id="features" class="px-6 py-24 md:py-32">
+  <div class="mx-auto max-w-5xl">
+    <h2 class="mb-16 text-center text-4xl md:text-5xl">
+      Zeed が他と違う <span style="color: var(--color-zeed-glow)">3 つ</span>
+    </h2>
+
+    <div class="grid gap-8 md:grid-cols-3">
+      {features.map((f) => (
+        <div
+          class="rounded-2xl border p-8 transition hover:border-transparent"
+          style="border-color: var(--color-zeed-border); background: var(--color-zeed-panel)"
+        >
+          <p class="mb-2 text-xs uppercase tracking-wider" style="color: var(--color-zeed-glow)">
+            {f.tag}
+          </p>
+          <h3 class="mb-4 text-2xl">{f.title}</h3>
+          <p class="mb-6 text-sm leading-relaxed" style="color: var(--color-zeed-muted)">
+            {f.desc}
+          </p>
+          <ul class="space-y-2 text-sm">
+            {f.points.map((p) => (
+              <li class="flex gap-2">
+                <span style="color: var(--color-zeed-glow)">—</span>
+                <span>{p}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
