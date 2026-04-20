@@ -14,5 +14,5 @@ export default defineConfig({
       minify: "esbuild",
     },
   },
-  site: "https://zeed.browser",
+  site: "https://zeedbrowser.com",
 });
