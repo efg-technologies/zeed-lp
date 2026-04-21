@@ -1,9 +1,10 @@
 ---
 const rows = [
-  { label: "Linux native", zeed: "✓", atlas: "—", comet: "—", fellou: "—", opera: "◯" },
+  { label: "Chrome 拡張がそのまま動く", zeed: "✓", atlas: "✓", comet: "✓", fellou: "✓", opera: "✓" },
+  { label: "Chrome から 1-click 移行", zeed: "✓", atlas: "✓", comet: "✓", fellou: "?", opera: "✓" },
   { label: "BYO LLM (好きなモデル)", zeed: "✓", atlas: "—", comet: "—", fellou: "—", opera: "—" },
   { label: "端末内データ (構造的)", zeed: "✓", atlas: "△", comet: "—", fellou: "△", opera: "△" },
-  { label: "オープンソース", zeed: "✓ MPL-2.0", atlas: "—", comet: "—", fellou: "部分", opera: "—" },
+  { label: "差分コード公開 (改造可)", zeed: "✓ MPL-2.0", atlas: "—", comet: "—", fellou: "部分", opera: "—" },
   { label: "MCP 対応 (Claude/Cursor 資産)", zeed: "✓", atlas: "—", comet: "—", fellou: "—", opera: "—" },
   { label: "月額", zeed: "$0", atlas: "$20 (Plus)", comet: "$0-20", fellou: "$0+", opera: "sub" },
 ];
@@ -23,8 +24,8 @@ const rows = [
       class="mb-12 text-center text-sm md:text-base"
       style="color: var(--color-zeed-muted)"
     >
-      Atlas / Comet / Fellou / Opera Neon は、全て Mac/Win から始まり、すべてクラウドに依存する。
-      <br class="hidden md:inline" />Zeed は、Linux から始まり、データを端末から出さない。
+      Atlas / Comet / Fellou / Opera Neon は、in-house LLM 固定でクラウド依存。
+      <br class="hidden md:inline" />Zeed は、あなたの LLM 鍵で、あなたの端末で動く。
     </p>
 
     <div class="overflow-x-auto">
