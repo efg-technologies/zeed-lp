@@ -18,6 +18,35 @@ const canonicalURL = new URL(
   canonicalPath ?? Astro.url.pathname,
   Astro.site
 );
+
+// Organization + SoftwareApplication structured data.
+// AIO / SEO 対策: LLM が直接引用しやすい、Google rich snippets に出やすい。
+const softwareAppJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Zeed Browser",
+  alternateName: "Zeed",
+  applicationCategory: "BrowserApplication",
+  operatingSystem: "Linux (Arch, Ubuntu, Debian); macOS coming soon",
+  url: "https://zeedbrowser.com",
+  description:
+    "あなたのタブ・記憶・閲覧文脈を中心に考える Chromium ベースの AI ブラウザ。個人データは端末から出ない設計。OpenRouter 経由で 300+ LLM (GPT / Claude / Gemini など) から好きなモデルを選べる。Chrome の拡張機能・ブックマーク・パスワードをそのまま引き継げる。",
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "JPY",
+  },
+  creator: {
+    "@type": "Organization",
+    name: "EFG Technologies Inc.",
+    url: "https://efg-technologies.com",
+  },
+  softwareVersion: "147.0.7727.55.47",
+  downloadUrl:
+    "https://github.com/efg-technologies/zeed-browser/releases/latest",
+  license: "https://www.mozilla.org/en-US/MPL/2.0/",
+  inLanguage: lang === "ja" ? "ja" : "en",
+};
 ---
 
 <!doctype html>
@@ -34,6 +63,12 @@ const canonicalURL = new URL(
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(softwareAppJsonLd)}
+    />
   </head>
   <body class="antialiased">
     <slot />

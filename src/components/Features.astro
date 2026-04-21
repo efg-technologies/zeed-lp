@@ -1,53 +1,53 @@
 ---
 const features = [
   {
-    tag: "Act",
-    title: "ブラウザが、手を動かす",
-    lead: "質問に答えるだけの AI は、もう要らない。Zeed はサイドバーから自律的にタブを開き、検索し、フォームを埋め、目的を完遂する。",
-    points: [
-      "3-mode routing: Auto / Ask / Search を送信ごとに切替",
-      "危険な操作 (購入・送信・削除) は必ずユーザー承認を挟む",
-      "プロンプト注入に <untrusted> タグで構造的防御",
-    ],
-  },
-  {
-    tag: "Think with you",
+    tag: "あなたと考える",
     title: "タブが、頭を持つ",
-    lead: "Chrome の 100 タブは、あなたの頭の中。Zeed はタブ・メモ・ユーザー意図を 5 層の Context Map にして、閲覧中の頁に何が関連するか描き続ける。",
+    lead: "開いているタブ、過去のメモ、今読んでいる内容 — すべてを文脈として繋ぎ、「今のあなたに関連する情報」をサイドバーに描き続ける。チャットは常にその文脈の上で答える。",
     points: [
-      "5 層: Profile → TabGroup → Tab → Topic → Memory",
-      "ハイライトはあなたの memory と意味が近い文を動的選択 (Phase 2)",
-      "RSS・Tasks・Bookmark・Marks を統合した同じ頭脳",
+      "タブ・メモ・トピックを 5 層で地図化 (Profile → TabGroup → Tab → Topic → Memory)",
+      "重要箇所のハイライトは、あなたの関心で動的に変わる",
+      "RSS・ブックマーク・タスクも同じ頭脳に繋がる",
     ],
   },
   {
-    tag: "Stay private",
-    title: "Zeed から、見えない",
-    lead: "他社の AI ブラウザはクラウドに送信する。Zeed は構造で送れない。Memory・履歴・Bookmark は端末内 localStorage のみ、計測は 2 イベントの allowlist、opt-in 既定 OFF。",
+    tag: "手も動かす",
+    title: "ブラウザ操作まで任せられる",
+    lead: "サイドバーに「Amazon で本を探して注文前まで進めて」と書けば、タブを開き、検索し、フォームを埋め、確認画面まで運ぶ。重要な決定 (購入・送信・削除) は必ず確認を取る。",
     points: [
-      "no_personal_data.test.ts がビルドごとに allowlist 外を拒否",
-      "プライベートモード: AI 層完全オフ、通常ブラウザとして使える",
-      "差分コードは MPL-2.0 で公開、監査と改造が可能",
+      "3 モード: Auto (自動判断) / Ask (質問だけ) / Search (Web 検索) を送信ごとに切替",
+      "購入・送信・削除など重要な操作は必ず承認を求める",
+      "悪意あるページからの命令ハイジャックを構造で防ぐ",
     ],
   },
   {
-    tag: "Drop in",
-    title: "Chrome から、続きを。",
-    lead: "Chromium 147 ベース。Web Store の 190,000+ 拡張、ブックマーク、保存パスワード、自動入力、サイト互換性、すべてそのまま。Zeed を「ちょっと試す」では終わらせない。",
+    tag: "見られない",
+    title: "データは、端末から出ない",
+    lead: "記憶・履歴・ブックマークは、あなたの端末内だけに保存。計測も最小 2 項目、デフォルト OFF。他社は AI 会社のクラウドに送信しますが、Zeed は構造的にそれができない設計。",
     points: [
-      "Chrome プロファイルは読むだけ — 戻りたければ即 Chrome に復帰可",
-      "fcitx5-mozc 含む CJK IME は Chromium 標準のまま動く",
-      "AI 層を切れば素の Chromium として 100% 使える (\"--disable-features=ZeedAgent\")",
+      "Memory / 履歴 / Bookmark は端末内 localStorage のみ",
+      "プライバシーモードで AI 機能を完全オフ、普通のブラウザとして使える",
+      "コードは MPL-2.0 で公開、中身を確認して自分で改造できる",
     ],
   },
   {
-    tag: "Your LLM",
-    title: "あなたの鍵、あなたの料金",
-    lead: "他社は in-house LLM 固定で月 $20。Zeed は OpenRouter API key を貼るだけで GPT / Claude / Gemini / OSS モデル、どれでも走る。料金はあなたが直接プロバイダに払う、Zeed は仲介しない。",
+    tag: "LLM は好きに",
+    title: "あなたの LLM、あなたの料金",
+    lead: "他社は AI 会社が決めたモデルに固定され、月 $20 払う。Zeed は OpenRouter を通して 300+ モデル (GPT / Claude / Gemini / Llama 3 / Qwen など) から自由に選べる。料金は好きな LLM 会社に直接払うので、中間マージンなし。",
     points: [
-      "Zeed は LLM コストに一切関与しない。重利用でも BYO が最安",
-      "MCP Connector で Claude Desktop / Cursor / Zed の tool 資産も接続",
-      "Bearer token 対応済、OAuth loopback は Phase 2.2 で追加予定",
+      "モデルは交換部品。用途 (コーディング / 文章 / 日本語) ごとに使い分け可",
+      "Claude Desktop / Cursor と同じ MCP ツールも取り込める",
+      "重利用でも最安 — Zeed は LLM 代金を一切取らない",
+    ],
+  },
+  {
+    tag: "移行は 1 クリック",
+    title: "Chrome から、続きを",
+    lead: "Chromium ベース。Web Store の 190,000+ 拡張、ブックマーク、保存パスワード、自動入力、サイト互換性、すべてそのまま動く。「ちょっと試す」ではなく、普段使いのメインブラウザとしてそのまま乗り換えられる。",
+    points: [
+      "Chrome プロファイルは読むだけ — 戻りたければいつでも Chrome に帰れる",
+      "日本語 IME (fcitx5-mozc など) は Chromium 標準のまま動く",
+      "AI 機能を切ると、素の Chromium として 100% そのまま使える",
     ],
   },
 ];
@@ -58,11 +58,10 @@ const features = [
       class="mb-3 text-center text-xs uppercase tracking-[0.2em]"
       style="color: var(--color-zeed-glow)"
     >
-      4 つの芯
+      Zeed が約束する 5 つ
     </p>
-    <h2 class="mb-16 text-center text-4xl md:text-5xl">
-      <span style="color: var(--color-zeed-muted)">ブラウザが、</span>
-      <br class="md:hidden" />考える / 動く / 隠す / 任せる。
+    <h2 class="mb-16 text-center text-3xl md:text-5xl">
+      ブラウザは、<br class="md:hidden" />あなたの味方に戻る。
     </h2>
 
     <div class="grid gap-5 md:grid-cols-2">
