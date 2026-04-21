@@ -1,0 +1,205 @@
+---
+---
+<div class="relative mx-auto mb-12 max-w-4xl">
+  <div
+    class="pointer-events-none absolute inset-0 rounded-[28px] opacity-30 blur-2xl"
+    style="background: radial-gradient(ellipse at 70% 50%, var(--color-zeed-accent) 0%, transparent 60%)"
+  ></div>
+
+  <svg
+    viewBox="0 0 800 500"
+    xmlns="http://www.w3.org/2000/svg"
+    role="img"
+    aria-label="Zeed browser window illustration — a webpage on the left, Zeed AI sidebar on the right showing context map and agent actions"
+    class="relative w-full drop-shadow-2xl"
+  >
+    <defs>
+      <linearGradient id="glow" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#8B5CF6" stop-opacity="0.6" />
+        <stop offset="100%" stop-color="#5B21B6" stop-opacity="0.1" />
+      </linearGradient>
+      <linearGradient id="chip-grad" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#8B5CF6" stop-opacity="0.35" />
+        <stop offset="100%" stop-color="#5B21B6" stop-opacity="0.15" />
+      </linearGradient>
+      <filter id="soft-glow">
+        <feGaussianBlur stdDeviation="3" />
+      </filter>
+      <!-- Subtle border-radius clip for the whole window -->
+      <clipPath id="window-clip">
+        <rect x="20" y="20" width="760" height="460" rx="14" />
+      </clipPath>
+    </defs>
+
+    <!-- Window shadow -->
+    <rect x="28" y="32" width="760" height="460" rx="14" fill="#000" opacity="0.4" filter="url(#soft-glow)" />
+
+    <!-- Window body -->
+    <rect x="20" y="20" width="760" height="460" rx="14" fill="#0F0F12" stroke="#2A2A34" stroke-width="1" />
+
+    <!-- Title bar -->
+    <rect x="20" y="20" width="760" height="36" rx="14" fill="#1A1A1F" />
+    <rect x="20" y="46" width="760" height="10" fill="#1A1A1F" />
+    <line x1="20" y1="56" x2="780" y2="56" stroke="#2A2A34" stroke-width="1" />
+
+    <!-- Traffic lights -->
+    <circle cx="38" cy="38" r="6" fill="#ff5f57" />
+    <circle cx="58" cy="38" r="6" fill="#febc2e" />
+    <circle cx="78" cy="38" r="6" fill="#28c840" />
+
+    <!-- Tabs -->
+    <g transform="translate(110,26)">
+      <rect x="0" y="0" width="140" height="22" rx="6" fill="#2A2A34" />
+      <rect x="0" y="0" width="140" height="22" rx="6" fill="url(#chip-grad)" />
+      <circle cx="10" cy="11" r="3" fill="#8B5CF6" />
+      <rect x="20" y="8" width="80" height="6" rx="3" fill="#E7E7EA" opacity="0.7" />
+
+      <rect x="150" y="0" width="100" height="22" rx="6" fill="#1A1A1F" stroke="#2A2A34" stroke-width="1" />
+      <rect x="160" y="8" width="60" height="6" rx="3" fill="#9B9BA3" opacity="0.6" />
+
+      <rect x="260" y="0" width="100" height="22" rx="6" fill="#1A1A1F" stroke="#2A2A34" stroke-width="1" />
+      <rect x="270" y="8" width="50" height="6" rx="3" fill="#9B9BA3" opacity="0.6" />
+
+      <text x="380" y="16" fill="#6B6B73" font-size="12" font-family="-apple-system,sans-serif">+</text>
+    </g>
+
+    <!-- URL bar (below tabs) hidden for simplicity, we go straight to body split -->
+
+    <!-- Body split: main page (left) + Zeed sidebar (right) -->
+    <g transform="translate(20,56)">
+      <!-- Left: main content area -->
+      <rect x="0" y="0" width="500" height="424" fill="#0F0F12" />
+
+      <!-- page heading block -->
+      <g transform="translate(40,40)">
+        <rect x="0" y="0" width="240" height="14" rx="3" fill="#E7E7EA" opacity="0.9" />
+        <rect x="0" y="28" width="180" height="10" rx="3" fill="#9B9BA3" opacity="0.6" />
+      </g>
+
+      <!-- paragraph lines -->
+      <g transform="translate(40,100)" fill="#3A3A45">
+        <rect x="0" y="0" width="420" height="6" rx="2" />
+        <rect x="0" y="14" width="400" height="6" rx="2" />
+        <rect x="0" y="28" width="380" height="6" rx="2" />
+        <rect x="0" y="42" width="360" height="6" rx="2" />
+        <rect x="0" y="56" width="200" height="6" rx="2" />
+      </g>
+
+      <!-- an image placeholder -->
+      <rect x="40" y="190" width="420" height="110" rx="6" fill="#1A1A1F" stroke="#2A2A34" stroke-width="1" />
+      <g transform="translate(40,190)" opacity="0.25">
+        <rect x="20" y="20" width="60" height="60" rx="4" fill="#8B5CF6" />
+        <rect x="90" y="30" width="80" height="8" rx="2" fill="#E7E7EA" />
+        <rect x="90" y="48" width="130" height="5" rx="2" fill="#9B9BA3" />
+        <rect x="90" y="60" width="100" height="5" rx="2" fill="#9B9BA3" />
+      </g>
+
+      <!-- more lines -->
+      <g transform="translate(40,320)" fill="#3A3A45">
+        <rect x="0" y="0" width="400" height="6" rx="2" />
+        <rect x="0" y="14" width="420" height="6" rx="2" />
+        <rect x="0" y="28" width="300" height="6" rx="2" />
+      </g>
+
+      <!-- highlight mark (showing Zeed highlighted a sentence) -->
+      <g transform="translate(40,100)">
+        <rect x="0" y="12" width="400" height="8" rx="2" fill="#8B5CF6" opacity="0.35" />
+      </g>
+
+      <!-- Right: Zeed sidebar -->
+      <g transform="translate(500,0)">
+        <rect x="0" y="0" width="260" height="424" fill="#1A1A1F" />
+        <line x1="0" y1="0" x2="0" y2="424" stroke="#2A2A34" stroke-width="1" />
+
+        <!-- accent glow top border for "sidebar is active" -->
+        <rect x="0" y="0" width="260" height="2" fill="url(#glow)">
+          <animate attributeName="opacity" values="0.5;1;0.5" dur="3s" repeatCount="indefinite" />
+        </rect>
+
+        <!-- Zeed logo/label -->
+        <g transform="translate(20,24)">
+          <circle cx="8" cy="8" r="4" fill="#8B5CF6">
+            <animate attributeName="opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite" />
+          </circle>
+          <text x="22" y="13" fill="#E7E7EA" font-size="13" font-weight="700" font-family="-apple-system,sans-serif">Zeed</text>
+          <rect x="180" y="4" width="40" height="10" rx="2" fill="#2A2A34" />
+          <text x="184" y="12" fill="#9B9BA3" font-size="8" font-family="-apple-system,sans-serif">Context</text>
+        </g>
+
+        <!-- Context Map: small force-directed graph -->
+        <g transform="translate(130,110)">
+          <!-- edges -->
+          <line x1="0" y1="0" x2="-40" y2="-25" stroke="#5B21B6" stroke-width="1" opacity="0.5" />
+          <line x1="0" y1="0" x2="40" y2="-28" stroke="#5B21B6" stroke-width="1" opacity="0.5" />
+          <line x1="0" y1="0" x2="-30" y2="30" stroke="#5B21B6" stroke-width="1" opacity="0.5" />
+          <line x1="0" y1="0" x2="35" y2="32" stroke="#5B21B6" stroke-width="1" opacity="0.5" />
+          <line x1="-40" y1="-25" x2="40" y2="-28" stroke="#5B21B6" stroke-width="0.5" opacity="0.25" />
+          <line x1="-30" y1="30" x2="35" y2="32" stroke="#5B21B6" stroke-width="0.5" opacity="0.25" />
+
+          <!-- nodes -->
+          <circle cx="0" cy="0" r="10" fill="#8B5CF6">
+            <animate attributeName="r" values="10;12;10" dur="2.5s" repeatCount="indefinite" />
+          </circle>
+          <circle cx="-40" cy="-25" r="6" fill="#1A1A1F" stroke="#8B5CF6" stroke-width="1.5" />
+          <circle cx="40" cy="-28" r="6" fill="#1A1A1F" stroke="#8B5CF6" stroke-width="1.5" />
+          <circle cx="-30" cy="30" r="5" fill="#1A1A1F" stroke="#A78BFA" stroke-width="1.5" />
+          <circle cx="35" cy="32" r="5" fill="#1A1A1F" stroke="#A78BFA" stroke-width="1.5" />
+        </g>
+
+        <!-- divider -->
+        <line x1="20" y1="195" x2="240" y2="195" stroke="#2A2A34" stroke-width="1" />
+
+        <!-- Agent chat bubbles (3 rows) -->
+        <g transform="translate(20,215)">
+          <!-- user message -->
+          <rect x="90" y="0" width="150" height="28" rx="7" fill="#5B21B6" />
+          <rect x="98" y="10" width="100" height="4" rx="2" fill="#E7E7EA" opacity="0.9" />
+          <rect x="98" y="20" width="80" height="4" rx="2" fill="#E7E7EA" opacity="0.6" />
+
+          <!-- tool pill -->
+          <g transform="translate(0,40)">
+            <rect x="0" y="0" width="120" height="18" rx="9" fill="#2A2A34" stroke="#5B21B6" stroke-width="1" stroke-dasharray="2,2" />
+            <text x="10" y="12" fill="#A78BFA" font-size="9" font-family="ui-monospace,monospace">◈ read_page</text>
+          </g>
+          <g transform="translate(0,64)">
+            <rect x="0" y="0" width="100" height="18" rx="9" fill="#2A2A34" stroke="#5B21B6" stroke-width="1" stroke-dasharray="2,2" />
+            <text x="10" y="12" fill="#A78BFA" font-size="9" font-family="ui-monospace,monospace">◈ search</text>
+          </g>
+
+          <!-- assistant response -->
+          <g transform="translate(0,95)">
+            <rect x="0" y="0" width="210" height="48" rx="7" fill="#1A1A1F" stroke="#2A2A34" stroke-width="1" />
+            <rect x="10" y="10" width="180" height="4" rx="2" fill="#E7E7EA" opacity="0.8" />
+            <rect x="10" y="20" width="160" height="4" rx="2" fill="#9B9BA3" opacity="0.7" />
+            <rect x="10" y="30" width="140" height="4" rx="2" fill="#9B9BA3" opacity="0.7" />
+          </g>
+        </g>
+
+        <!-- input area at bottom -->
+        <g transform="translate(20,380)">
+          <rect x="0" y="0" width="220" height="28" rx="6" fill="#0F0F12" stroke="#2A2A34" stroke-width="1" />
+          <text x="10" y="18" fill="#6B6B73" font-size="10" font-family="-apple-system,sans-serif">質問、検索、ブラウザ操作…</text>
+        </g>
+      </g>
+
+      <!-- Data flow arc: page → sidebar (shows "Zeed reading the page") -->
+      <g opacity="0.7">
+        <path
+          d="M 260 230 Q 450 220 560 260"
+          stroke="#8B5CF6"
+          stroke-width="1.5"
+          fill="none"
+          stroke-dasharray="4,4"
+          opacity="0.5"
+        >
+          <animate attributeName="stroke-dashoffset" values="0;-16" dur="1.5s" repeatCount="indefinite" />
+        </path>
+      </g>
+    </g>
+  </svg>
+
+  <!-- Caption below -->
+  <p class="mt-4 text-center text-xs" style="color: var(--color-zeed-muted)">
+    ページを読みながら、隣のサイドバーで文脈を graph 化 · 必要なら tool を呼んで手を貸す
+  </p>
+</div>
