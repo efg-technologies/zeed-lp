@@ -1,38 +1,7 @@
 ---
-const faqs = [
-  {
-    q: "他の AI ブラウザ (Comet / Atlas / Dia) とどう違う？",
-    a: "3 点です。(1) あなたのデータが端末から出ない設計 — 他社は AI 会社のクラウドに送ります。(2) 使う LLM を好きに選べる — 他社は固定。(3) AI 機能を切ると普通の Chromium として使える。迷わず戻れる設計。",
-  },
-  {
-    q: "Chrome から移行できる？",
-    a: "はい。Chromium ベースなので Chrome の拡張機能 (19 万以上)、ブックマーク、保存パスワード、自動入力、全部そのまま引き継げます。Chrome プロファイルは読むだけ (上書きしない) なので、合わなければいつでも Chrome に戻れます。",
-  },
-  {
-    q: "データはどこに保存される？",
-    a: "あなたの端末内だけ (localStorage と SQLite)。記憶、履歴、ブックマーク、チャットログ、すべてクラウドに送りません。匿名計測も最小 2 項目、デフォルト OFF で opt-in 方式。プライベートモードで AI 機能を完全に切ることも可能です。",
-  },
-  {
-    q: "どの AI モデルが使える？",
-    a: "OpenRouter 経由で 300+ モデルから選べます。OpenAI GPT、Anthropic Claude、Google Gemini、オープンソースの Llama 3 / Qwen / DeepSeek など。用途 (コーディング / 日本語文章 / 翻訳) で使い分けられます。",
-  },
-  {
-    q: "料金は？",
-    a: "Zeed 本体は無料、広告もなし。LLM の利用料は、あなたが選んだ AI 会社 (OpenAI / Anthropic 等) に直接払います。Zeed は中間マージンを取らないため、どれだけ使っても最安です。将来、クラウド同期などの追加サービスを有料 tier で提供予定 ($5/月〜)。",
-  },
-  {
-    q: "どんな OS で使える？",
-    a: "現在は Linux (Arch AUR + Ubuntu/Debian .deb) で配布中。Mac 版を準備中です。iPhone やクラウド同期は、Mac 版の反応を見て判断します。",
-  },
-  {
-    q: "Zeed の記憶 (Memory) はどう動く？",
-    a: "閲覧中のページやチャットから「ユーザーの意図・決定・発見」を抽出して、Profile → TabGroup → Tab → Topic → Memory の 5 層で整理。AI はこれを参照するので、毎回ゼロから質問し直す必要がなくなります。生のログは溜めません。",
-  },
-  {
-    q: "AI がブラウザを自動操作するって、危なくない？",
-    a: "Zeed は「購入・送信・削除・投稿」など重要な操作の前に必ず承認を求めます。また、悪意あるページが AI に命令を注入してくる攻撃 (プロンプトインジェクション) を構造的に防ぐ仕組みを入れています。不安な時はプライベートモードで AI 機能を完全に切れます。",
-  },
-];
+import { getLang, t } from "../lib/i18n";
+const lang = getLang(Astro.currentLocale);
+const s = t(lang).faq;
 ---
 <section id="faq" class="px-6 py-24 md:py-32" style="background: var(--color-zeed-panel)">
   <div class="mx-auto max-w-3xl">
@@ -40,14 +9,14 @@ const faqs = [
       class="mb-3 text-center text-xs uppercase tracking-[0.2em]"
       style="color: var(--color-zeed-glow)"
     >
-      よくある質問
+      {s.eyebrow}
     </p>
     <h2 class="mb-12 text-center text-3xl md:text-5xl">
-      気になる 8 つ。
+      {s.heading}
     </h2>
 
     <div class="space-y-3">
-      {faqs.map((f, i) => (
+      {s.items.map((f, i) => (
         <details
           class="rounded-xl border p-5 transition group"
           style="border-color: var(--color-zeed-border); background: var(--color-zeed-bg)"
@@ -72,7 +41,8 @@ const faqs = [
   set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: faqs.map((f) => ({
+    inLanguage: lang === "ja" ? "ja" : "en",
+    mainEntity: s.items.map((f) => ({
       "@type": "Question",
       name: f.q,
       acceptedAnswer: {

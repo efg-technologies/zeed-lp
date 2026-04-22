@@ -1,12 +1,22 @@
 ---
+import { getLang, t, altLangUrl } from "../lib/i18n";
+const lang = getLang(Astro.currentLocale);
+const s = t(lang).docnav;
+const homeHref = lang === "ja" ? "/ja/" : "/";
+const privacyHref = lang === "ja" ? "/ja/privacy" : "/privacy";
+const termsHref = lang === "ja" ? "/ja/terms" : "/terms";
+const altLang = lang === "ja" ? "en" : "ja";
+const altHref = altLangUrl(Astro.url.pathname, altLang);
+const altLabel = lang === "ja" ? "English" : "日本語";
 ---
 <nav class="border-b px-6 py-4" style="border-color: var(--color-zeed-border)">
   <div class="mx-auto flex max-w-4xl items-center justify-between">
-    <a href="/" class="font-bold">Zeed</a>
+    <a href={homeHref} class="font-bold">Zeed</a>
     <div class="flex gap-6 text-sm">
-      <a href="/">トップ</a>
-      <a href="/privacy">プライバシー</a>
-      <a href="/terms">利用規約</a>
+      <a href={homeHref}>{s.top}</a>
+      <a href={privacyHref}>{s.privacy}</a>
+      <a href={termsHref}>{s.terms}</a>
+      <a href={altHref} hreflang={altLang} rel="alternate">{altLabel}</a>
     </div>
   </div>
 </nav>

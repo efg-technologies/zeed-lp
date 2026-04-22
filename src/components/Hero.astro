@@ -1,5 +1,10 @@
 ---
 import HeroVisual from "./HeroVisual.astro";
+import { getLang, t } from "../lib/i18n";
+const lang = getLang(Astro.currentLocale);
+const s = t(lang).hero;
+const installHref = lang === "ja" ? "/ja/#install" : "/#install";
+const compareHref = lang === "ja" ? "/ja/#compare" : "/#compare";
 ---
 <section class="relative overflow-hidden px-6 pt-16 pb-20 md:pt-28 md:pb-28">
   <div
@@ -19,18 +24,18 @@ import HeroVisual from "./HeroVisual.astro";
         style="border-color: var(--color-zeed-border); background: var(--color-zeed-panel)"
       >
         <span class="h-2 w-2 animate-pulse rounded-full" style="background: #4ade80"></span>
-        <span style="color: var(--color-zeed-muted)">v147.0.7727.55.46 · AUR + .deb 配布中</span>
+        <span style="color: var(--color-zeed-muted)">{s.badge}</span>
         <span style="color: var(--color-zeed-glow)">→</span>
       </a>
     </div>
 
     <h1 class="mb-8 text-center text-4xl leading-[1.1] md:text-6xl md:leading-[1.05]">
-      <span class="block">&ldquo;あなた&rdquo;を中心に</span>
+      <span class="block" set:html={s.title1}></span>
       <span
         class="block bg-clip-text text-transparent"
         style="background-image: linear-gradient(120deg, var(--color-zeed-glow), var(--color-zeed-accent-2))"
       >
-        考える AI ブラウザ
+        {s.title2}
       </span>
     </h1>
 
@@ -38,37 +43,48 @@ import HeroVisual from "./HeroVisual.astro";
       class="mx-auto mb-10 max-w-2xl text-center text-lg md:text-xl"
       style="color: var(--color-zeed-muted)"
     >
-      タブ・記憶・閲覧中の文脈を使って<strong style="color: var(--color-zeed-text)">あなたと一緒に考える</strong>。
-      必要なら<strong style="color: var(--color-zeed-text)">操作まで任せられる</strong>。
-      <br class="hidden md:inline" />
-      <strong style="color: var(--color-zeed-text)">あなたの情報は、あなたの端末から出ない</strong>
-      設計。Chromium ベース、好きな LLM (GPT / Claude / Gemini) を選べる。
+      {lang === "ja" ? (
+        <>
+          タブ・記憶・閲覧中の文脈を使って<strong style="color: var(--color-zeed-text)">{s.leadBoldA}</strong>。
+          必要なら<strong style="color: var(--color-zeed-text)">{s.leadBoldB}</strong>。
+          <br class="hidden md:inline" />
+          <strong style="color: var(--color-zeed-text)">{s.leadBoldC}</strong>
+          {s.leadTail}
+        </>
+      ) : (
+        <>
+          Zeed <strong style="color: var(--color-zeed-text)">{s.leadBoldA}</strong>, and
+          <strong style="color: var(--color-zeed-text)"> {s.leadBoldB}</strong>.
+          <br class="hidden md:inline" />
+          <strong style="color: var(--color-zeed-text)">{s.leadBoldC}</strong> {s.leadTail}
+        </>
+      )}
     </p>
 
     <HeroVisual />
 
     <div class="flex flex-col items-center justify-center gap-3 sm:flex-row">
       <a
-        href="#install"
+        href={installHref}
         class="rounded-xl px-8 py-4 text-base font-semibold text-white transition hover:opacity-90"
         style="background: var(--color-zeed-accent-2)"
       >
-        Linux にインストール
+        {s.ctaInstall}
       </a>
       <a
-        href="#compare"
+        href={compareHref}
         class="rounded-xl border px-8 py-4 text-base font-semibold transition hover:border-transparent"
         style="border-color: var(--color-zeed-border); color: var(--color-zeed-text)"
       >
-        他の AI ブラウザとの違い
+        {s.ctaCompare}
       </a>
     </div>
 
     <p class="mt-6 text-center text-sm" style="color: var(--color-zeed-muted)">
-      無料 · 広告なし · 好きな LLM を選べる · Mac 版準備中
+      {s.tagline}
     </p>
     <p class="mt-2 text-center text-xs" style="color: var(--color-zeed-muted)">
-      Chrome の拡張機能・ブックマーク・パスワードは、そのまま引き継ぎ
+      {s.chromeNote}
     </p>
 
     <div
@@ -77,25 +93,19 @@ import HeroVisual from "./HeroVisual.astro";
     >
       <div class="text-center">
         <div class="text-2xl font-bold md:text-3xl" style="color: var(--color-zeed-glow)">0</div>
-        <div class="mt-1 text-xs" style="color: var(--color-zeed-muted)">トラッキング</div>
+        <div class="mt-1 text-xs" style="color: var(--color-zeed-muted)">{s.stat1Label}</div>
       </div>
       <div class="text-center">
         <div class="text-2xl font-bold md:text-3xl" style="color: var(--color-zeed-glow)">2</div>
-        <div class="mt-1 text-xs" style="color: var(--color-zeed-muted)">
-          計測イベント<br class="hidden md:inline" />(opt-in OFF 既定)
-        </div>
+        <div class="mt-1 text-xs" style="color: var(--color-zeed-muted)">{s.stat2Label}</div>
       </div>
       <div class="text-center">
-        <div class="text-2xl font-bold md:text-3xl" style="color: var(--color-zeed-glow)">5層</div>
-        <div class="mt-1 text-xs" style="color: var(--color-zeed-muted)">
-          Context Map<br class="hidden md:inline" />(Profile→Tab→Memory)
-        </div>
+        <div class="text-2xl font-bold md:text-3xl" style="color: var(--color-zeed-glow)">{lang === "ja" ? "5層" : "5"}</div>
+        <div class="mt-1 text-xs" style="color: var(--color-zeed-muted)">{s.stat3Label}</div>
       </div>
       <div class="text-center">
         <div class="text-2xl font-bold md:text-3xl" style="color: var(--color-zeed-glow)">300+</div>
-        <div class="mt-1 text-xs" style="color: var(--color-zeed-muted)">
-          選べる LLM<br class="hidden md:inline" />(GPT / Claude / Gemini…)
-        </div>
+        <div class="mt-1 text-xs" style="color: var(--color-zeed-muted)">{s.stat4Label}</div>
       </div>
     </div>
   </div>

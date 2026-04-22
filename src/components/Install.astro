@@ -1,21 +1,24 @@
 ---
+import { getLang, t } from "../lib/i18n";
+const lang = getLang(Astro.currentLocale);
+const s = t(lang).install;
 ---
 <section id="install" class="px-6 py-24 md:py-32" style="background: var(--color-zeed-panel)">
   <div class="mx-auto max-w-3xl">
-    <h2 class="mb-4 text-center text-4xl md:text-5xl">Linux にインストール</h2>
+    <h2 class="mb-4 text-center text-4xl md:text-5xl">{s.heading}</h2>
     <p class="mb-12 text-center" style="color: var(--color-zeed-muted)">
-      Arch / Ubuntu / Debian 対応。Mac は近日、iOS はロードマップ上。
+      {s.subhead}
     </p>
 
     <div
       class="rounded-2xl border p-8 mb-6"
       style="border-color: var(--color-zeed-border); background: var(--color-zeed-bg)"
     >
-      <h3 class="mb-3 text-lg font-semibold">Arch (AUR)</h3>
-      <p class="mb-2 text-sm" style="color: var(--color-zeed-muted)">AUR helper (yay / paru):</p>
+      <h3 class="mb-3 text-lg font-semibold">{s.archTitle}</h3>
+      <p class="mb-2 text-sm" style="color: var(--color-zeed-muted)">{s.archHelperLabel}</p>
       <pre class="mb-4"><code>yay -S zeed-bin</code></pre>
 
-      <p class="mb-2 text-sm" style="color: var(--color-zeed-muted)">手動 makepkg:</p>
+      <p class="mb-2 text-sm" style="color: var(--color-zeed-muted)">{s.archManualLabel}</p>
       <pre><code>git clone https://aur.archlinux.org/zeed-bin.git
 cd zeed-bin
 makepkg -si</code></pre>
@@ -25,20 +28,18 @@ makepkg -si</code></pre>
       class="rounded-2xl border p-8"
       style="border-color: var(--color-zeed-border); background: var(--color-zeed-bg)"
     >
-      <h3 class="mb-3 text-lg font-semibold">Ubuntu / Debian</h3>
-      <p class="mb-2 text-sm" style="color: var(--color-zeed-muted)">最新 release から .deb を取得してインストール:</p>
+      <h3 class="mb-3 text-lg font-semibold">{s.debTitle}</h3>
+      <p class="mb-2 text-sm" style="color: var(--color-zeed-muted)">{s.debLabel}</p>
       <pre class="mb-2"><code>curl -LO https://github.com/efg-technologies/zeed-browser-dist/releases/latest/download/zeed-browser_147.0.7727.55.46-1_amd64.deb
 sudo apt install ./zeed-browser_147.0.7727.55.46-1_amd64.deb</code></pre>
       <p class="text-xs" style="color: var(--color-zeed-muted)">
-        GPG 署名付き APT repo (<code>apt-get install zeed-browser</code>) は準備中。
+        {s.debAptNote}
       </p>
     </div>
 
     <p class="mt-8 text-center text-sm" style="color: var(--color-zeed-muted)">
-      初回起動時に OpenRouter API key を貼るだけ。<br />
-      トラブルは
-      <a href="https://github.com/efg-technologies/zeed-browser/issues">GitHub issues</a>
-      までどうぞ。
+      {s.firstRun}<br />
+      <a href="https://github.com/efg-technologies/zeed-browser/issues">{s.issuesLink}</a>
     </p>
   </div>
 </section>

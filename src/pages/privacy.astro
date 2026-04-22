@@ -2,159 +2,166 @@
 import Base from "../layouts/Base.astro";
 import DocNav from "../components/DocNav.astro";
 import Footer from "../components/Footer.astro";
+import { strings } from "../lib/i18n";
 
-const lastUpdated = "2026-04-20";
+const lastUpdated = "2026-04-22";
+const meta = strings.en.meta;
 ---
-<Base
-  title="プライバシーポリシー — Zeed Browser"
-  description="Zeed Browser のプライバシーポリシー。個人データは端末内保存のみ、計測は最小限の 2 イベント、opt-in default OFF。"
->
+<Base title={meta.privacyTitle} description={meta.privacyDescription}>
   <DocNav />
   <article
     class="mx-auto max-w-3xl px-6 py-16"
     style="color: var(--color-zeed-text)"
   >
-    <h1 class="mb-2 text-4xl">プライバシーポリシー</h1>
+    <h1 class="mb-2 text-4xl">Privacy Policy</h1>
     <p class="mb-10 text-sm" style="color: var(--color-zeed-muted)">
-      最終更新: {lastUpdated}
+      Last updated: {lastUpdated}
     </p>
 
     <section class="space-y-10 leading-relaxed">
       <div>
-        <h2 class="mb-3 text-2xl">1. 基本方針</h2>
+        <h2 class="mb-3 text-2xl">1. Principle</h2>
         <p>
-          Zeed Browser ("本ソフトウェア") は、<strong>個人データを
-          Zeed / EFG Technologies Inc. ("当社") から見えない構造</strong>
-          で設計されています。本ポリシーは GDPR (EU)、APPI (日本)、
-          および CCPA (カリフォルニア州) に準拠することを前提にしています。
+          Zeed Browser (the "Software") is designed so that personal data
+          is <strong>not visible to Zeed or EFG Technologies Inc. (the "Company")</strong>
+          by construction. This policy is written to be compatible with
+          GDPR (EU), APPI (Japan), and CCPA (California).
         </p>
       </div>
 
       <div>
-        <h2 class="mb-3 text-2xl">2. 収集する情報</h2>
-        <p class="mb-4">本ソフトウェアは、以下の<strong>最小限</strong>の匿名テレメトリのみを送信します。事前にユーザーが設定画面でオプトインした場合に限ります。初期状態はオフです。</p>
+        <h2 class="mb-3 text-2xl">2. What we collect</h2>
+        <p class="mb-4">
+          The Software sends only the following <strong>minimal, anonymous</strong>
+          telemetry, and only if the user explicitly opts in from settings.
+          It is OFF by default.
+        </p>
         <ul class="list-disc space-y-2 pl-6">
           <li>
-            <code>crash</code> — アプリケーションクラッシュ発生時。
-            フィールド: SHA-256 でハッシュ化されたスタックトレース、バージョン番号のみ。
+            <code>crash</code> — on application crash.
+            Fields: SHA-256 hash of the stack trace, version number only.
           </li>
           <li>
-            <code>agent_run</code> — Agent 実行完了時。
-            フィールド: 成否 (boolean)、ステップ数、終了理由の enum、バージョン番号のみ。
+            <code>agent_run</code> — when an Agent run completes.
+            Fields: success (boolean), step count, termination reason enum,
+            version number only.
           </li>
         </ul>
         <p class="mt-4">
-          送信先は当社の Cloudflare Worker で、個人データ用インフラとは
-          <strong>別 Cloudflare アカウント</strong>で完全分離されています。
-          IP アドレスはエッジで破棄され、<code>CF-IPCountry</code>
-          (国コード 2 文字) のみが保持されます。
+          Events are received by our Cloudflare Worker, which is isolated in
+          a <strong>separate Cloudflare account</strong> from any user-data
+          infrastructure. IP addresses are discarded at the edge; only the
+          two-letter <code>CF-IPCountry</code> code is kept.
         </p>
       </div>
 
       <div>
-        <h2 class="mb-3 text-2xl">3. 収集しない情報</h2>
+        <h2 class="mb-3 text-2xl">3. What we do not collect</h2>
         <p class="mb-4">
-          本ソフトウェアは以下を<strong>一切送信しません</strong>。
-          これらのフィールドはテレメトリ allowlist に含まれておらず、
-          バックステップテスト (<code>no_personal_data.test.ts</code>) で
-          コード側でも恒常的に検証されています。
+          The Software <strong>never transmits</strong> any of the following.
+          These fields are not on the telemetry allowlist and are continuously
+          enforced by a regression test (<code>no_personal_data.test.ts</code>).
         </p>
         <ul class="list-disc space-y-2 pl-6">
-          <li>閲覧 URL、ページタイトル、ページ本文</li>
-          <li>チャットの内容、Memory、Bookmark、メモ書き</li>
-          <li>Email アドレス、IP アドレス、ユーザー名、ホスト名</li>
-          <li>TabGroup 名、Tab 名、Agent のツール呼び出し引数・結果</li>
+          <li>Browsing URLs, page titles, page content</li>
+          <li>Chat contents, Memory, bookmarks, notes</li>
+          <li>Email address, IP address, username, hostname</li>
+          <li>TabGroup names, tab names, Agent tool arguments or results</li>
         </ul>
       </div>
 
       <div>
-        <h2 class="mb-3 text-2xl">4. ローカル保存データ</h2>
+        <h2 class="mb-3 text-2xl">4. Data stored locally</h2>
         <p>
-          Memory、Bookmark、Tasks、チャット履歴、Context Map、設定などは
-          <strong>すべてユーザー端末内の <code>localStorage</code> /
-          SQLite のみ</strong>に保存されます。当社サーバには送信されません。
+          Memory, bookmarks, tasks, chat history, Context Map, and settings
+          are <strong>stored exclusively on your device</strong> in
+          <code>localStorage</code> / SQLite. None of it reaches our servers.
         </p>
         <p class="mt-4">
-          将来のクラウド同期機能 (Phase 6) は<strong>オプトイン</strong>であり、
-          Supabase の Row-Level Security、および将来の E2E 暗号化
-          (AES-GCM) により、当社管理者でもデータを復号できない運用を予定しています。
+          Any future cloud sync (Phase 6) will be <strong>opt-in</strong>,
+          secured by Supabase Row-Level Security, and moving toward
+          end-to-end encryption (AES-GCM) so that our administrators cannot
+          decrypt the data.
         </p>
       </div>
 
       <div>
-        <h2 class="mb-3 text-2xl">5. オプトアウト</h2>
+        <h2 class="mb-3 text-2xl">5. Opt-out</h2>
         <p>
-          テレメトリは初期状態で<strong>オフ</strong>です。設定
-          <code>chrome://zeed-sidebar/</code> → 設定 → "Send anonymous telemetry"
-          から任意に切り替えられます。オフにした瞬間、キュー中のイベントも
-          即座に破棄されます。
+          Telemetry is <strong>off by default</strong>. You can toggle it any
+          time from <code>chrome://zeed-sidebar/</code> → Settings → "Send
+          anonymous telemetry". Turning it off immediately drops any queued
+          events.
         </p>
       </div>
 
       <div>
-        <h2 class="mb-3 text-2xl">6. プライベートモード</h2>
+        <h2 class="mb-3 text-2xl">6. Private mode</h2>
         <p>
-          プライベートモード ON の間、本ソフトウェアは次のいずれも行いません:
-          Memory 書き込み、Fact 抽出、Context Map 構築、Agent 実行、
-          推薦、チャット (AI 機能はオフ)、telemetry 送信。
+          While Private mode is on, the Software does not: write to Memory,
+          extract facts, build Context Map, run Agents, produce
+          recommendations, chat (AI is disabled), or send telemetry.
         </p>
       </div>
 
       <div>
-        <h2 class="mb-3 text-2xl">7. ブラウザが通信する外部サービス</h2>
+        <h2 class="mb-3 text-2xl">7. External services the browser talks to</h2>
         <p class="mb-4">
-          以下は<strong>ユーザーの明示的な設定で接続</strong>されるサービスで、
-          当社が仲介することはありません。
+          The services below are reached only when <strong>you explicitly
+          configure them</strong>. The Company does not act as a middleman.
         </p>
         <ul class="list-disc space-y-2 pl-6">
           <li>
-            <strong>OpenRouter</strong> — ユーザーが API key を貼った場合のみ、チャット・Agent 用に直接通信。当社はこの通信を観測・保存しません。
+            <strong>OpenRouter</strong> — only when you paste an API key.
+            Chat and Agent traffic goes directly to OpenRouter. We do not
+            observe or retain it.
           </li>
           <li>
-            <strong>RSS フィード配信元</strong> — ユーザーが購読した feed URL に対する HTTP(S) 取得。
+            <strong>RSS feed sources</strong> — HTTP(S) fetches to feed URLs
+            you subscribe to.
           </li>
           <li>
-            <strong>Chromium 標準サービス</strong> — Safe Browsing、CRL、時刻同期など。詳細は Chromium プライバシーノートに準ずる。
+            <strong>Chromium standard services</strong> — Safe Browsing, CRL,
+            time sync, etc. See the upstream Chromium privacy notes for
+            details.
           </li>
         </ul>
       </div>
 
       <div>
-        <h2 class="mb-3 text-2xl">8. Cookie の扱い</h2>
+        <h2 class="mb-3 text-2xl">8. Cookies</h2>
         <p>
-          本 LP (<code>zeedbrowser.com</code>) はトラッキング Cookie を使用しません。
-          アプリケーション自体は Chromium と同等の Cookie 管理をユーザーに提供します。
+          This landing page (<code>zeedbrowser.com</code>) uses no tracking
+          cookies. The application itself exposes Chromium-equivalent cookie
+          controls to the user.
         </p>
       </div>
 
       <div>
-        <h2 class="mb-3 text-2xl">9. お問い合わせ</h2>
+        <h2 class="mb-3 text-2xl">9. Contact</h2>
         <p>
-          プライバシーに関する質問は
-          <a href="mailto:privacy@efg-technologies.com">
-            privacy@efg-technologies.com
-          </a>
-          までお送りください。GDPR における Data Subject Access Request、
-          APPI における保有個人データの開示請求も同窓口で受け付けます。
+          Privacy questions:
+          <a href="mailto:privacy@efg-technologies.com">privacy@efg-technologies.com</a>.
+          GDPR Data Subject Access Requests and APPI disclosure requests are
+          handled at the same address.
         </p>
       </div>
 
       <div>
-        <h2 class="mb-3 text-2xl">10. 改訂</h2>
+        <h2 class="mb-3 text-2xl">10. Changes</h2>
         <p>
-          本ポリシーを改訂した場合、本ページの更新日を改めると同時に、
-          GitHub リリースノートで告知します。重大な変更時は
-          LP トップまたはサイドバー内で通知します。
+          When we revise this policy, we bump the "last updated" date above
+          and announce it in the GitHub release notes. Material changes also
+          surface as an in-product notice.
         </p>
       </div>
     </section>
 
     <p class="mt-12 text-sm" style="color: var(--color-zeed-muted)">
-      本ポリシーの運用は、spec
+      This policy is enforced by spec
       <a href="https://github.com/efg-technologies/lab/blob/main/plans/orion/telemetry.spec.md">
         plans/orion/telemetry.spec.md
-      </a>
-      にコード化されています。
+      </a>.
     </p>
   </article>
   <Footer />

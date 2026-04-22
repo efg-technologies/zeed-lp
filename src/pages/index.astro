@@ -7,11 +7,10 @@ import Roadmap from "../components/Roadmap.astro";
 import Install from "../components/Install.astro";
 import FAQ from "../components/FAQ.astro";
 import Footer from "../components/Footer.astro";
+import { strings } from "../lib/i18n";
+const s = strings.en.meta;
 ---
-<Base
-  title="Zeed — 「あなた」を中心に考える AI ブラウザ"
-  description="Chromium ベースの AI ブラウザ。あなたのタブ・記憶・閲覧文脈を中心に考え、必要なら手を貸す。個人データは Zeed から見えない構造。BYO OpenRouter key、AI を切れば素の Chromium として動く。"
->
+<Base title={s.indexTitle} description={s.indexDescription}>
   <Hero />
   <Features />
   <Compare />
