@@ -26,5 +26,5 @@ export default defineConfig({
       minify: "esbuild",
     },
   },
-  site: "https://zeedbrowser.com",
+  site: "https://zeed.run",
 });
