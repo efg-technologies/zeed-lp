@@ -25,7 +25,7 @@ makepkg -si</code></pre>
     </div>
 
     <div
-      class="rounded-2xl border p-8"
+      class="rounded-2xl border p-8 mb-6"
       style="border-color: var(--color-zeed-border); background: var(--color-zeed-bg)"
     >
       <h3 class="mb-3 text-lg font-semibold">{s.debTitle}</h3>
@@ -34,6 +34,31 @@ makepkg -si</code></pre>
 sudo apt install ./zeed-browser_147.0.7727.55.46-1_amd64.deb</code></pre>
       <p class="text-xs" style="color: var(--color-zeed-muted)">
         {s.debAptNote}
+      </p>
+    </div>
+
+    <div
+      class="rounded-2xl border p-8"
+      style="border-color: var(--color-zeed-border); background: var(--color-zeed-bg)"
+    >
+      <div class="mb-3 flex items-center gap-3">
+        <h3 class="text-lg font-semibold">{s.macTitle}</h3>
+        <span
+          class="rounded-full px-2 py-0.5 text-xs font-medium"
+          style="background: rgba(167,139,250,0.15); color: #a78bfa; border: 1px solid rgba(167,139,250,0.3)"
+        >{s.macBetaBadge}</span>
+      </div>
+      <p class="mb-3 text-sm" style="color: var(--color-zeed-muted)">{s.macDescription}</p>
+      <a
+        href="https://github.com/efg-technologies/zeed-browser/releases/latest/download/zeed-147.0.7727.55.48-mac-arm64.dmg"
+        class="mb-3 inline-block rounded-lg px-4 py-2 text-sm font-medium"
+        style="background: var(--color-zeed-accent, #5b21b6); color: white"
+      >
+        Download .dmg (Apple Silicon) →
+      </a>
+      <pre class="mb-2"><code>xattr -dr com.apple.quarantine /Applications/Zeed\ Browser.app</code></pre>
+      <p class="text-xs" style="color: var(--color-zeed-muted)">
+        {s.macQuarantineNote}
       </p>
     </div>
 
