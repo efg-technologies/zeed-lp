@@ -87,6 +87,10 @@ type StringTable = {
     debTitle: string;
     debLabel: string;
     debAptNote: string;
+    macTitle: string;
+    macBetaBadge: string;
+    macDescription: string;
+    macQuarantineNote: string;
     firstRun: string;
     issuesLink: string;
   };
@@ -237,14 +241,18 @@ const en: StringTable = {
     sourceNote: "Based on each vendor’s public material as of 2026-04. Independent research.",
   },
   install: {
-    heading: "Install on Linux",
-    subhead: "Arch / Ubuntu / Debian. macOS next. iOS on the roadmap.",
+    heading: "Install",
+    subhead: "Arch / Ubuntu / Debian / macOS (beta). iOS on the roadmap.",
     archTitle: "Arch (AUR)",
     archHelperLabel: "AUR helper (yay / paru):",
     archManualLabel: "Or manual makepkg:",
     debTitle: "Ubuntu / Debian",
     debLabel: "Grab the latest .deb and install:",
     debAptNote: "GPG-signed APT repo (apt-get install zeed-browser) is in progress.",
+    macTitle: "macOS (Apple Silicon)",
+    macBetaBadge: "Unsigned beta",
+    macDescription: "Apple Developer signing is still in progress (D-U-N-S application pending). Meanwhile, grab the beta .dmg below. Remove the Gatekeeper quarantine, then drag to Applications.",
+    macQuarantineNote: "(After mounting the .dmg and copying Zeed to Applications.)",
     firstRun: "On first launch, paste your OpenRouter API key. That’s it.",
     issuesLink: "Open an issue on GitHub",
   },
@@ -255,9 +263,9 @@ const en: StringTable = {
     nowTitle: "Linux (Arch AUR + Ubuntu/Debian .deb)",
     nowBody:
       "Chromium base, sidebar AI, five-layer Context Map, MCP, 300+ LLMs. Ready as a daily driver today.",
-    nextBadge: "Next",
-    nextTitle: "macOS",
-    nextBody: "Native builds for Apple Silicon and Intel are in the oven.",
+    nextBadge: "Beta",
+    nextTitle: "macOS (Apple Silicon, unsigned beta)",
+    nextBody: "Now available as an unsigned beta .dmg. Signed + notarized build is next, once Apple Developer enrollment clears.",
     laterBadge: "Later",
     laterTitle: "iPhone · multi-device sync · more to come",
     laterBody: "Order and timing depend on how the macOS launch lands.",
@@ -427,14 +435,18 @@ const ja: StringTable = {
     sourceNote: "比較表は各社の公開情報 (2026-04 時点) に基づく、独自調査",
   },
   install: {
-    heading: "Linux にインストール",
-    subhead: "Arch / Ubuntu / Debian 対応。Mac は近日、iOS はロードマップ上。",
+    heading: "インストール",
+    subhead: "Arch / Ubuntu / Debian / macOS (beta) 対応。iOS はロードマップ上。",
     archTitle: "Arch (AUR)",
     archHelperLabel: "AUR helper (yay / paru):",
     archManualLabel: "手動 makepkg:",
     debTitle: "Ubuntu / Debian",
     debLabel: "最新 release から .deb を取得してインストール:",
     debAptNote: "GPG 署名付き APT repo (apt-get install zeed-browser) は準備中。",
+    macTitle: "macOS (Apple Silicon)",
+    macBetaBadge: "未署名 beta",
+    macDescription: "Apple Developer 署名は準備中 (D-U-N-S 申請中) のため、下記 .dmg を DL して Gatekeeper の quarantine を外し、Applications へドラッグしてください。",
+    macQuarantineNote: "(.dmg をマウントして Zeed を Applications にコピー後に実行)",
     firstRun: "初回起動時に OpenRouter API key を貼るだけ。",
     issuesLink: "GitHub issues",
   },
@@ -445,9 +457,9 @@ const ja: StringTable = {
     nowTitle: "Linux (Arch AUR + Ubuntu/Debian .deb)",
     nowBody:
       "Chromium ベース、サイドバー AI、5 層 Context Map、MCP、300+ LLM 対応。今日からメインブラウザとして使える。",
-    nextBadge: "次",
-    nextTitle: "Mac 版",
-    nextBody: "macOS (Apple Silicon / Intel) 対応のネイティブ版を準備中。",
+    nextBadge: "beta",
+    nextTitle: "macOS (Apple Silicon、未署名 beta)",
+    nextBody: "未署名 beta .dmg を公開中。署名 + notarize は Apple Developer 審査完了後に対応。",
     laterBadge: "coming",
     laterTitle: "iPhone · 多デバイス同期 · まだ言えないもの",
     laterBody: "順番と時期は Mac 版の反応次第で調整する。",
