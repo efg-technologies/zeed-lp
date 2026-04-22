@@ -1,4 +1,7 @@
 ---
+import { getLang, t } from "../lib/i18n";
+const lang = getLang(Astro.currentLocale);
+const s = t(lang).roadmap;
 ---
 <section id="roadmap" class="px-6 py-24 md:py-32">
   <div class="mx-auto max-w-3xl">
@@ -6,14 +9,14 @@
       class="mb-3 text-center text-xs uppercase tracking-[0.2em]"
       style="color: var(--color-zeed-glow)"
     >
-      Roadmap
+      {s.eyebrow}
     </p>
     <h2 class="mb-4 text-center text-3xl md:text-5xl">
-      次に来るもの。
+      {s.heading}
     </h2>
 
     <div class="mt-12 space-y-4">
-      <!-- Now: Linux -->
+      <!-- Now -->
       <div
         class="rounded-2xl border p-6"
         style="border-color: var(--color-zeed-glow); background: rgba(139, 92, 246, 0.08)"
@@ -21,44 +24,43 @@
         <div class="mb-3 inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-mono"
              style="background: rgba(74, 222, 128, 0.15); color: #4ade80">
           <span class="h-1.5 w-1.5 animate-pulse rounded-full" style="background: #4ade80"></span>
-          配布中
+          {s.nowBadge}
         </div>
-        <div class="text-lg font-semibold">Linux (Arch AUR + Ubuntu/Debian .deb)</div>
+        <div class="text-lg font-semibold">{s.nowTitle}</div>
         <div class="mt-2 text-sm" style="color: var(--color-zeed-muted)">
-          Chromium ベース、サイドバー AI、5 層 Context Map、MCP、300+ LLM 対応。
-          今日からメインブラウザとして使える。
+          {s.nowBody}
         </div>
       </div>
 
-      <!-- Next: Mac -->
+      <!-- Next -->
       <div
         class="rounded-2xl border p-6"
         style="border-color: var(--color-zeed-border); background: var(--color-zeed-panel)"
       >
         <div class="mb-3 inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-mono"
              style="background: rgba(251, 146, 60, 0.15); color: #fb923c">
-          次
+          {s.nextBadge}
         </div>
-        <div class="text-lg font-semibold">Mac 版</div>
+        <div class="text-lg font-semibold">{s.nextTitle}</div>
         <div class="mt-2 text-sm" style="color: var(--color-zeed-muted)">
-          macOS (Apple Silicon / Intel) 対応のネイティブ版を準備中。
+          {s.nextBody}
         </div>
       </div>
 
-      <!-- Blurred: later -->
+      <!-- Later -->
       <div
         class="relative rounded-2xl border p-6 opacity-60"
         style="border-color: var(--color-zeed-border); background: var(--color-zeed-panel); filter: blur(0.3px)"
       >
         <div class="mb-3 inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-mono"
              style="background: rgba(107, 114, 128, 0.2); color: #9ca3af">
-          coming
+          {s.laterBadge}
         </div>
         <div class="text-lg font-semibold" style="color: var(--color-zeed-muted)">
-          iPhone · 多デバイス同期 · まだ言えないもの
+          {s.laterTitle}
         </div>
         <div class="mt-2 text-sm" style="color: var(--color-zeed-muted)">
-          順番と時期は Mac 版の反応次第で調整する。
+          {s.laterBody}
         </div>
       </div>
     </div>

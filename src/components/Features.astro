@@ -1,56 +1,7 @@
 ---
-const features = [
-  {
-    tag: "あなたと考える",
-    title: "タブが、頭を持つ",
-    lead: "開いているタブ、過去のメモ、今読んでいる内容 — すべてを文脈として繋ぎ、「今のあなたに関連する情報」をサイドバーに描き続ける。チャットは常にその文脈の上で答える。",
-    points: [
-      "タブ・メモ・トピックを 5 層で地図化 (Profile → TabGroup → Tab → Topic → Memory)",
-      "重要箇所のハイライトは、あなたの関心で動的に変わる",
-      "RSS・ブックマーク・タスクも同じ頭脳に繋がる",
-    ],
-  },
-  {
-    tag: "手も動かす",
-    title: "ブラウザ操作まで任せられる",
-    lead: "サイドバーに「Amazon で本を探して注文前まで進めて」と書けば、タブを開き、検索し、フォームを埋め、確認画面まで運ぶ。重要な決定 (購入・送信・削除) は必ず確認を取る。",
-    points: [
-      "3 モード: Auto (自動判断) / Ask (質問だけ) / Search (Web 検索) を送信ごとに切替",
-      "購入・送信・削除など重要な操作は必ず承認を求める",
-      "悪意あるページからの命令ハイジャックを構造で防ぐ",
-    ],
-  },
-  {
-    tag: "見られない",
-    title: "データは、端末から出ない",
-    lead: "記憶・履歴・ブックマークは、あなたの端末内だけに保存。計測も最小 2 項目、デフォルト OFF。他社は AI 会社のクラウドに送信しますが、Zeed は構造的にそれができない設計。",
-    points: [
-      "Memory / 履歴 / Bookmark は端末内 localStorage のみ",
-      "プライバシーモードで AI 機能を完全オフ、普通のブラウザとして使える",
-      "コードは MPL-2.0 で公開、中身を確認して自分で改造できる",
-    ],
-  },
-  {
-    tag: "LLM は好きに",
-    title: "あなたの LLM、あなたの料金",
-    lead: "他社は AI 会社が決めたモデルに固定され、月 $20 払う。Zeed は OpenRouter を通して 300+ モデル (GPT / Claude / Gemini / Llama 3 / Qwen など) から自由に選べる。料金は好きな LLM 会社に直接払うので、中間マージンなし。",
-    points: [
-      "モデルは交換部品。用途 (コーディング / 文章 / 日本語) ごとに使い分け可",
-      "Claude Desktop / Cursor と同じ MCP ツールも取り込める",
-      "重利用でも最安 — Zeed は LLM 代金を一切取らない",
-    ],
-  },
-  {
-    tag: "移行は 1 クリック",
-    title: "Chrome から、続きを",
-    lead: "Chromium ベース。Web Store の 190,000+ 拡張、ブックマーク、保存パスワード、自動入力、サイト互換性、すべてそのまま動く。「ちょっと試す」ではなく、普段使いのメインブラウザとしてそのまま乗り換えられる。",
-    points: [
-      "Chrome プロファイルは読むだけ — 戻りたければいつでも Chrome に帰れる",
-      "日本語 IME (fcitx5-mozc など) は Chromium 標準のまま動く",
-      "AI 機能を切ると、素の Chromium として 100% そのまま使える",
-    ],
-  },
-];
+import { getLang, t } from "../lib/i18n";
+const lang = getLang(Astro.currentLocale);
+const s = t(lang).features;
 ---
 <section id="features" class="px-6 py-24 md:py-32">
   <div class="mx-auto max-w-5xl">
@@ -58,14 +9,14 @@ const features = [
       class="mb-3 text-center text-xs uppercase tracking-[0.2em]"
       style="color: var(--color-zeed-glow)"
     >
-      Zeed が約束する 5 つ
+      {s.eyebrow}
     </p>
     <h2 class="mb-16 text-center text-3xl md:text-5xl">
-      ブラウザは、<br class="md:hidden" />あなたの味方に戻る。
+      {s.heading}
     </h2>
 
     <div class="grid gap-5 md:grid-cols-2">
-      {features.map((f) => (
+      {s.items.map((f) => (
         <div
           class="rounded-2xl border p-8 transition hover:border-transparent"
           style="border-color: var(--color-zeed-border); background: var(--color-zeed-panel)"

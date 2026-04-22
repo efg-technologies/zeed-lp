@@ -2,157 +2,165 @@
 import Base from "../layouts/Base.astro";
 import DocNav from "../components/DocNav.astro";
 import Footer from "../components/Footer.astro";
+import { strings } from "../lib/i18n";
 
-const lastUpdated = "2026-04-20";
+const lastUpdated = "2026-04-22";
+const meta = strings.en.meta;
 ---
-<Base
-  title="利用規約 — Zeed Browser"
-  description="Zeed Browser の利用規約。Agent 自律動作の責任範囲、料金プラン、アフィリエイト開示。"
->
+<Base title={meta.termsTitle} description={meta.termsDescription}>
   <DocNav />
   <article
     class="mx-auto max-w-3xl px-6 py-16"
     style="color: var(--color-zeed-text)"
   >
-    <h1 class="mb-2 text-4xl">利用規約</h1>
+    <h1 class="mb-2 text-4xl">Terms of Service</h1>
     <p class="mb-10 text-sm" style="color: var(--color-zeed-muted)">
-      最終更新: {lastUpdated}
+      Last updated: {lastUpdated}
     </p>
 
     <section class="space-y-10 leading-relaxed">
       <div>
-        <h2 class="mb-3 text-2xl">1. 適用</h2>
+        <h2 class="mb-3 text-2xl">1. Scope</h2>
         <p>
-          本規約は、EFG Technologies Inc. ("当社") が提供するブラウザソフトウェア
-          Zeed Browser ("本ソフトウェア") の利用条件を定めます。本ソフトウェアを
-          インストール・使用した時点で本規約に同意したものとみなします。
+          These terms govern use of the browser software Zeed Browser
+          (the "Software") provided by EFG Technologies Inc. (the "Company").
+          Installing or using the Software constitutes acceptance of these
+          terms.
         </p>
       </div>
 
       <div>
-        <h2 class="mb-3 text-2xl">2. ライセンス</h2>
+        <h2 class="mb-3 text-2xl">2. License</h2>
         <p>
-          本ソフトウェアは Mozilla Public License 2.0 ("MPL-2.0") の下で
-          配布されます。ソースコードは
-          <a href="https://github.com/efg-technologies/zeed-browser">
-            GitHub
-          </a>
-          で公開されており、ライセンス条項の範囲で複製・改変・再配布が可能です。
+          The Software is distributed under Mozilla Public License 2.0
+          ("MPL-2.0"). Source code is available on
+          <a href="https://github.com/efg-technologies/zeed-browser">GitHub</a>.
+          Reproduction, modification, and redistribution are permitted within
+          the license.
         </p>
       </div>
 
       <div>
-        <h2 class="mb-3 text-2xl">3. Agent 機能の自律動作と責任</h2>
+        <h2 class="mb-3 text-2xl">3. Agent autonomy and responsibility</h2>
         <p class="mb-4">
-          本ソフトウェアの Agent 機能は、ユーザーの指示に基づいて
-          Web サイトを自動操作します。以下の点にご注意ください。
+          The Software's Agent feature operates websites on your behalf
+          based on your instructions. Note:
         </p>
         <ul class="list-disc space-y-2 pl-6">
           <li>
-            <strong>Sensitive action は確認を求めます</strong> —
-            フォーム送信・購入・投稿・削除・認証・支払い等は、実行前に
-            ユーザーに承認を求めます。承認なしに完了することはありません。
+            <strong>Sensitive actions require explicit approval.</strong>
+            Form submission, purchase, publishing, deletion, authentication,
+            and payment all prompt for confirmation before executing. None
+            complete silently.
           </li>
           <li>
-            <strong>プライベートモードでは Agent は動作しません</strong>。
+            <strong>Agent is disabled in Private mode.</strong>
           </li>
           <li>
-            <strong>最終的な実行判断と責任はユーザーにあります</strong>。
-            Agent が誤操作した結果 (誤注文、誤送信、誤削除) は、
-            ユーザー自身の指示と確認の下で発生したものとして扱われます。
-            当社はこれらの結果に対して責任を負いません。
+            <strong>Final decisions and responsibility rest with the user.</strong>
+            Outcomes of Agent actions (incorrect orders, misdirected messages,
+            accidental deletions) are considered user-authorized, and the
+            Company is not liable for them.
           </li>
           <li>
-            <strong>Agent は第三者サイトの利用規約に従って動作してください</strong>。
-            スクレイピング禁止・ログイン代行禁止等のサイト規約に反する利用は
-            ユーザーの責任です。
+            <strong>You must follow third-party site terms.</strong>
+            Using Agent to bypass anti-scraping or anti-automation policies
+            is your responsibility.
           </li>
         </ul>
       </div>
 
       <div>
-        <h2 class="mb-3 text-2xl">4. LLM / 外部 API の扱い</h2>
+        <h2 class="mb-3 text-2xl">4. LLM and external APIs</h2>
         <p>
-          本ソフトウェアの AI 機能は、ユーザーが設定した OpenRouter API key を
-          介して LLM プロバイダに直接リクエストを送ります。当社はこの通信を
-          仲介・保存しません。LLM 利用に伴う料金はユーザーが直接プロバイダに
-          支払います。LLM の応答内容の正確性・適法性について当社は保証しません。
+          The Software's AI features send requests directly to LLM providers
+          through the OpenRouter API key you configure. The Company does not
+          relay or retain this traffic. LLM usage fees are paid by you
+          directly to the provider. The Company makes no warranty as to
+          correctness or legality of LLM output.
         </p>
       </div>
 
       <div>
-        <h2 class="mb-3 text-2xl">5. 料金プラン (将来)</h2>
+        <h2 class="mb-3 text-2xl">5. Pricing (planned)</h2>
         <p class="mb-4">
-          現在 (Phase 1) は<strong>無料</strong>配布のみです。将来の tier 構成:
+          Today (Phase 1) the Software is distributed <strong>free</strong>.
+          Planned tiers:
         </p>
         <ul class="list-disc space-y-2 pl-6">
           <li>
-            <strong>Zeed Local (無料)</strong> — BYO OpenRouter key、ローカル完結機能すべて、単一デバイス利用
+            <strong>Zeed Local (free)</strong> — BYO OpenRouter key, all
+            local features, single-device use.
           </li>
           <li>
-            <strong>Zeed Plus ($5/月 予定)</strong> — + 多デバイス同期 / OS-level cron / Email ingress / 優先サポート
+            <strong>Zeed Plus ($5/mo, planned)</strong> — adds multi-device
+            sync, OS-level cron, email ingress, priority support.
           </li>
           <li>
-            <strong>Zeed Pro ($10/月 予定)</strong> — + managed LLM / cron 実行枠 3 倍 / first-party Agent plugins
+            <strong>Zeed Pro ($10/mo, planned)</strong> — adds managed LLM,
+            3× cron execution budget, first-party Agent plugins.
           </li>
         </ul>
         <p class="mt-4">
-          課金機能の開始時期および価格は予告なく変更されることがあります。
+          Timing and pricing of paid tiers may change without notice.
         </p>
       </div>
 
       <div>
-        <h2 class="mb-3 text-2xl">6. アフィリエイト開示</h2>
+        <h2 class="mb-3 text-2xl">6. Affiliate disclosure</h2>
         <p>
-          将来の Phase 7 において、Agent が Amazon・楽天・宿泊予約サイト等の
-          検索結果でユーザーに見える形でアフィリエイトタグを付加する場合があります。
-          この時、Agent は必ず URL を通知し、ユーザーが任意で設定から無効化できます。
-          当社はクリックログの<strong>匿名集約値</strong>のみを参照し、
-          個人ユーザーを識別できる情報は受け取りません。
+          In a future Phase 7, the Agent may append affiliate tags to URLs
+          from Amazon, Rakuten, booking sites, etc. in user-visible search
+          results. When it does, the Agent will surface the URL, and the
+          user can disable the behavior in settings at any time. The Company
+          consumes only <strong>anonymous aggregate click data</strong> —
+          no personally identifiable information.
         </p>
       </div>
 
       <div>
-        <h2 class="mb-3 text-2xl">7. 禁止事項</h2>
+        <h2 class="mb-3 text-2xl">7. Prohibited uses</h2>
         <ul class="list-disc space-y-2 pl-6">
-          <li>本ソフトウェアを用いて違法行為、他者への迷惑行為、著作権侵害を行うこと</li>
-          <li>Agent を用いて第三者サイトの利用規約を組織的に回避すること</li>
-          <li>本ソフトウェアの脆弱性を善意の目的以外で利用すること (善意の脆弱性報告は歓迎します)</li>
-          <li>当社ブランド・ロゴを無断で商用利用すること</li>
+          <li>Using the Software for illegal acts, harassment, or copyright infringement.</li>
+          <li>Using Agent to systematically evade a third-party site's terms.</li>
+          <li>Exploiting vulnerabilities for any purpose other than good-faith security research (responsible disclosure is welcome).</li>
+          <li>Commercial use of the Company's brand or logo without permission.</li>
         </ul>
       </div>
 
       <div>
-        <h2 class="mb-3 text-2xl">8. 免責</h2>
+        <h2 class="mb-3 text-2xl">8. Disclaimer</h2>
         <p>
-          本ソフトウェアは「現状のまま」提供され、商品性・特定目的適合性・
-          非侵害性について明示・黙示を問わず一切の保証を行いません。
-          本ソフトウェアの利用に起因してユーザーまたは第三者に生じた損害
-          (データ損失、機会損失、間接損害を含む) について、当社は
-          適用法の範囲内で責任を負いません。
+          The Software is provided "as is", without warranty of any kind,
+          express or implied, including merchantability, fitness for a
+          particular purpose, and non-infringement. To the extent permitted
+          by law, the Company is not liable for damages (data loss, lost
+          opportunity, indirect damages) arising from use of the Software.
         </p>
       </div>
 
       <div>
-        <h2 class="mb-3 text-2xl">9. 準拠法・管轄</h2>
+        <h2 class="mb-3 text-2xl">9. Governing law and jurisdiction</h2>
         <p>
-          本規約は日本法に準拠します。本規約または本ソフトウェアに関して
-          生じた紛争は、東京地方裁判所を第一審の専属的合意管轄裁判所とします。
-          EU / UK ユーザーに対する消費者保護法上の強行規定はこれを妨げません。
+          These terms are governed by the laws of Japan. Disputes arising
+          from these terms or the Software are subject to the exclusive
+          jurisdiction of the Tokyo District Court as the court of first
+          instance. Mandatory consumer-protection provisions applicable to
+          EU/UK users are unaffected.
         </p>
       </div>
 
       <div>
-        <h2 class="mb-3 text-2xl">10. 改訂</h2>
+        <h2 class="mb-3 text-2xl">10. Changes</h2>
         <p>
-          当社は本規約を必要に応じて改訂できます。重大な変更は LP トップ
-          および GitHub リリースノートで告知します。改訂後に本ソフトウェアを
-          継続利用した場合、変更に同意したものとみなします。
+          The Company may revise these terms. Material changes are announced
+          on the landing page and in GitHub release notes. Continued use of
+          the Software after a revision constitutes acceptance of it.
         </p>
       </div>
 
       <div>
-        <h2 class="mb-3 text-2xl">11. お問い合わせ</h2>
+        <h2 class="mb-3 text-2xl">11. Contact</h2>
         <p>
           <a href="mailto:support@efg-technologies.com">support@efg-technologies.com</a>
         </p>

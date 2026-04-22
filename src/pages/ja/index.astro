@@ -1,0 +1,21 @@
+---
+import Base from "../../layouts/Base.astro";
+import Hero from "../../components/Hero.astro";
+import Features from "../../components/Features.astro";
+import Compare from "../../components/Compare.astro";
+import Roadmap from "../../components/Roadmap.astro";
+import Install from "../../components/Install.astro";
+import FAQ from "../../components/FAQ.astro";
+import Footer from "../../components/Footer.astro";
+import { strings } from "../../lib/i18n";
+const s = strings.ja.meta;
+---
+<Base title={s.indexTitle} description={s.indexDescription}>
+  <Hero />
+  <Features />
+  <Compare />
+  <Install />
+  <Roadmap />
+  <FAQ />
+  <Footer />
+</Base>
