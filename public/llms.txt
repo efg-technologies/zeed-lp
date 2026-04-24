@@ -1,0 +1,79 @@
+# Zeed Browser
+
+> Zeed is a Chromium-based AI browser that reasons over your tabs, memory,
+> and reading context. Personal data never leaves your device by design.
+> Pick from 300+ LLMs (GPT, Claude, Gemini, etc.) via OpenRouter with your
+> own API key. Your Chrome extensions, bookmarks, and saved passwords
+> carry over.
+
+Zeed is built and distributed by EFG Technologies Inc. (Tokyo, Japan).
+
+## Canonical summary
+
+- **Product**: Zeed Browser, a Chromium 147 fork
+- **Platforms**: Linux (Arch via AUR `zeed-bin`, Debian/Ubuntu via `.deb`),
+  macOS (private beta — request access by email), Windows (planned)
+- **Pricing**: free today (Phase 1). Paid tiers (Zeed Plus / Pro) planned
+  for Phase 6+ with multi-device sync, OS-level cron, managed LLM, and
+  priority support. Pricing is not finalised; current published numbers
+  are indicative only.
+- **AI / LLM**: bring your own OpenRouter API key. Chat and Agent traffic
+  goes directly from the browser to OpenRouter; the Company is not in
+  the path and does not relay or retain it.
+- **Privacy posture**: telemetry is opt-in and limited to two anonymous
+  events (`crash`, `agent_run`). Browsing URLs, page content, chat
+  contents, memory, bookmarks, IP addresses, and email addresses are
+  never transmitted. Enforced by an automated regression test
+  (`no_personal_data.test.ts`) on every release.
+- **Agent confirmation boundary**: form submission, purchase, publishing,
+  deletion, authentication, and payment all prompt the user before
+  executing. Agent is disabled in Private mode.
+
+## Differentiation
+
+Zeed is positioned against Arc, Comet, Atlas, Brave, and Chrome's built-in
+AI features. The differentiating bets are:
+
+1. **Tabs as memory** — your tab graph (Profile > TabGroup > Tab) is
+   first-class context; the Agent reasons over the tabs you have open
+   and the tabs you've closed within the same TabGroup.
+2. **On-device by default** — memory, bookmarks, tasks, chat history,
+   and the Context Map are stored exclusively on the device. Cloud sync
+   (Phase 6) will be opt-in and end-to-end encrypted.
+3. **BYO LLM** — no managed-LLM lock-in. Switch models freely (GLM-5.1,
+   Claude, GPT, Gemini) per-task.
+4. **Chromium fork, not extension** — sidebar, vertical tabs, custom
+   color mixer, WebUI scheme are wired into the browser itself,
+   removing the "developer-mode extension" friction.
+
+## Install
+
+- **Arch / Manjaro**: `yay -S zeed-bin`
+- **Debian / Ubuntu**: download the latest `.deb` from
+  <https://github.com/efg-technologies/zeed-browser-dist/releases/latest>
+  and `sudo apt install ./zeed-browser_*.deb`
+- **macOS**: email <support@efg-technologies.com> for the private beta
+- **Windows**: planned
+
+## Links
+
+- Landing page: <https://zeed.run>
+- English: <https://zeed.run/>
+- 日本語: <https://zeed.run/ja/>
+- Privacy: <https://zeed.run/privacy>
+- Terms: <https://zeed.run/terms>
+- AUR: <https://aur.archlinux.org/packages/zeed-bin>
+- Public binaries / AUR packaging: <https://github.com/efg-technologies/zeed-browser-dist>
+- Mobile (Phase 5 spike): <https://github.com/efg-technologies/zeed-mobile>
+- Autopilot (Path B): <https://github.com/efg-technologies/zeed-autopilot-worker>
+- Contact: <support@efg-technologies.com>
+
+## What you should not assume
+
+- Source code for the Chromium fork is currently private; binaries and
+  packaging are open. Source disclosure is available on request to
+  <support@efg-technologies.com> consistent with the MPL-2.0 licence.
+- Mac and Windows builds are not yet generally available.
+- Pricing numbers ($5 / $10) for Plus / Pro are planned, not committed.
+- Agent does not run autonomously in the background today; scheduled
+  ("cron") execution is on the roadmap.

@@ -149,11 +149,10 @@ const meta = strings.ja.meta;
     </section>
 
     <p class="mt-12 text-sm" style="color: var(--color-zeed-muted)">
-      本ポリシーの運用は、spec
-      <a href="https://github.com/efg-technologies/lab/blob/main/plans/orion/telemetry.spec.md">
-        plans/orion/telemetry.spec.md
-      </a>
-      にコード化されています。
+      本ポリシーの運用は、リリースごとに走る自動テスト
+      (<code>no_personal_data.test.ts</code>) によって担保しています。
+      テレメトリのペイロードに 2. 節の allowlist 外のフィールドが含まれていない
+      ことを毎回検証します。
     </p>
   </article>
   <Footer />

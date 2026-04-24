@@ -15,8 +15,8 @@ const altHref = altLangUrl(Astro.url.pathname, altLang);
     <nav class="flex flex-wrap justify-center gap-6 text-sm">
       <a href={privacyHref}>{s.privacy}</a>
       <a href={termsHref}>{s.terms}</a>
-      <a href="https://github.com/efg-technologies/zeed-browser">{s.github}</a>
-      <a href="https://github.com/efg-technologies/zeed-browser/issues">{s.issues}</a>
+      <a href="https://github.com/efg-technologies/zeed-browser-dist">{s.github}</a>
+      <a href="mailto:support@efg-technologies.com?subject=Zeed%20feedback">{s.issues}</a>
       <a href={altHref} hreflang={altLang} rel="alternate">{s.altLang}</a>
     </nav>
   </div>
