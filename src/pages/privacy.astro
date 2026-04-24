@@ -158,10 +158,10 @@ const meta = strings.en.meta;
     </section>
 
     <p class="mt-12 text-sm" style="color: var(--color-zeed-muted)">
-      This policy is enforced by spec
-      <a href="https://github.com/efg-technologies/lab/blob/main/plans/orion/telemetry.spec.md">
-        plans/orion/telemetry.spec.md
-      </a>.
+      This policy is enforced by an automated regression test
+      (<code>no_personal_data.test.ts</code>) that runs on every release and
+      asserts the telemetry payload contains no fields outside the allowlist
+      stated in section 2.
     </p>
   </article>
   <Footer />

@@ -90,6 +90,7 @@ type StringTable = {
     macTitle: string;
     macBetaBadge: string;
     macDescription: string;
+    macRequestCta: string;
     macQuarantineNote: string;
     firstRun: string;
     issuesLink: string;
@@ -250,11 +251,12 @@ const en: StringTable = {
     debLabel: "Grab the latest .deb and install:",
     debAptNote: "GPG-signed APT repo (apt-get install zeed-browser) is in progress.",
     macTitle: "macOS (Apple Silicon)",
-    macBetaBadge: "Unsigned beta",
-    macDescription: "Apple Developer signing is still in progress (D-U-N-S application pending). Meanwhile, grab the beta .dmg below. Remove the Gatekeeper quarantine, then drag to Applications.",
-    macQuarantineNote: "(After mounting the .dmg and copying Zeed to Applications.)",
+    macBetaBadge: "Private beta",
+    macDescription: "Apple Developer signing is still in progress (D-U-N-S pending), so the macOS build is shared by request only. Email us and we'll send you the unsigned .dmg + Gatekeeper instructions.",
+    macRequestCta: "Request beta access",
+    macQuarantineNote: "(Once you have the .dmg, mount it, copy Zeed to /Applications, then run xattr -dr com.apple.quarantine on the .app to clear the quarantine flag.)",
     firstRun: "On first launch, paste your OpenRouter API key. That’s it.",
-    issuesLink: "Open an issue on GitHub",
+    issuesLink: "Email feedback",
   },
   roadmap: {
     eyebrow: "Roadmap",
@@ -312,7 +314,7 @@ const en: StringTable = {
     privacy: "Privacy",
     terms: "Terms",
     github: "GitHub",
-    issues: "Issues",
+    issues: "Feedback",
     copyright: "© 2026 EFG Technologies Inc. Zeed Browser.",
     altLang: "日本語",
   },
@@ -444,11 +446,12 @@ const ja: StringTable = {
     debLabel: "最新 release から .deb を取得してインストール:",
     debAptNote: "GPG 署名付き APT repo (apt-get install zeed-browser) は準備中。",
     macTitle: "macOS (Apple Silicon)",
-    macBetaBadge: "未署名 beta",
-    macDescription: "Apple Developer 署名は準備中 (D-U-N-S 申請中) のため、下記 .dmg を DL して Gatekeeper の quarantine を外し、Applications へドラッグしてください。",
-    macQuarantineNote: "(.dmg をマウントして Zeed を Applications にコピー後に実行)",
+    macBetaBadge: "プライベート beta",
+    macDescription: "Apple Developer 署名は準備中 (D-U-N-S 申請中) のため、現状 macOS ビルドは個別配布です。メールでご連絡いただければ、未署名の .dmg と Gatekeeper 解除手順をお送りします。",
+    macRequestCta: "beta アクセスをリクエスト",
+    macQuarantineNote: "(.dmg を受け取ったら、マウントして Zeed を /Applications にコピー後、xattr -dr com.apple.quarantine を .app に実行して quarantine を外してください。)",
     firstRun: "初回起動時に OpenRouter API key を貼るだけ。",
-    issuesLink: "GitHub issues",
+    issuesLink: "メールでフィードバック",
   },
   roadmap: {
     eyebrow: "Roadmap",
@@ -506,7 +509,7 @@ const ja: StringTable = {
     privacy: "プライバシーポリシー",
     terms: "利用規約",
     github: "GitHub",
-    issues: "Issues",
+    issues: "フィードバック",
     copyright: "© 2026 EFG Technologies Inc. Zeed Browser.",
     altLang: "English",
   },

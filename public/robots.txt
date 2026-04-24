@@ -1,3 +1,38 @@
+# Default — every crawler may index the site.
 User-agent: *
 Allow: /
-Sitemap: https://zeed.browser/sitemap-index.xml
+
+# Explicit allow for AI search / answer-engine crawlers.
+# Listed individually so the intent is unambiguous if we ever
+# narrow `User-agent: *` later.
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+Sitemap: https://zeed.run/sitemap-index.xml
