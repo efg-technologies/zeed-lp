@@ -31,6 +31,16 @@
       "automerge": true,
       "automergeType": "pr",
       "platformAutomerge": true
+    },
+    {
+      "description": "Group Astro core + integrations",
+      "matchPackageNames": ["astro", "@astrojs/**"],
+      "groupName": "astro"
+    },
+    {
+      "description": "Group Tailwind ecosystem",
+      "matchPackageNames": ["tailwindcss", "@tailwindcss/**", "autoprefixer", "postcss"],
+      "groupName": "tailwind"
     }
   ],
   "vulnerabilityAlerts": {
