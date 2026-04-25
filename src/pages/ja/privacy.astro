@@ -31,22 +31,50 @@ const meta = strings.ja.meta;
 
       <div>
         <h2 class="mb-3 text-2xl">2. 収集する情報</h2>
-        <p class="mb-4">本ソフトウェアは、以下の<strong>最小限</strong>の匿名テレメトリのみを送信します。事前にユーザーが設定画面でオプトインした場合に限ります。初期状態はオフです。</p>
+        <p class="mb-4">
+          本ソフトウェアは、以下の<strong>最小限</strong>の匿名テレメトリ
+          イベントのみを送信します。事前にユーザーが設定画面でオプトインした
+          場合に限ります。初期状態はオフです。
+        </p>
         <ul class="list-disc space-y-2 pl-6">
           <li>
-            <code>crash</code> — アプリケーションクラッシュ発生時。
-            フィールド: SHA-256 でハッシュ化されたスタックトレース、バージョン番号のみ。
+            <code>install</code> — 初回起動時に 1 度だけ。
+            フィールド: ランダム UUID の install ID、バージョン、OS
+            (<code>linux</code> / <code>mac</code> / <code>ios</code> /
+            <code>unknown</code> のいずれか)。
+          </li>
+          <li>
+            <code>session_start</code> — ブラウザ起動ごとに 1 度。
+            フィールド: install ID、バージョン。
+          </li>
+          <li>
+            <code>heartbeat</code> — UTC 1 日に最大 1 度。
+            フィールド: install ID、バージョン。
+          </li>
+          <li>
+            <code>feature_used</code> — 固定 allowlist (約 20 種) の機能が
+            呼ばれた時のカウンター。
+            フィールド: install ID、バージョン、機能名。
           </li>
           <li>
             <code>agent_run</code> — Agent 実行完了時。
-            フィールド: 成否 (boolean)、ステップ数、終了理由の enum、バージョン番号のみ。
+            フィールド: install ID、バージョン、成否 (boolean)、ステップ数、
+            終了理由の enum。
+          </li>
+          <li>
+            <code>crash</code> — アプリケーションクラッシュ発生時。
+            フィールド: install ID、バージョン、SHA-256 でハッシュ化された
+            スタックトレース。
           </li>
         </ul>
         <p class="mt-4">
+          install ID は端末ローカルで生成されるランダム UUID で、サーバ側で
+          IP / 時刻 / アカウント等の他の識別子と join しません。
           送信先は当社の Cloudflare Worker で、個人データ用インフラとは
           <strong>別 Cloudflare アカウント</strong>で完全分離されています。
           IP アドレスはエッジで破棄され、<code>CF-IPCountry</code>
-          (国コード 2 文字) のみが保持されます。
+          (国コード 2 文字) のみが保持されます。送信されるフィールドは
+          spec で固定され、allowlist で自動的に強制されます。
         </p>
       </div>
 
