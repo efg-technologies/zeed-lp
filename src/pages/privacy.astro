@@ -33,25 +33,47 @@ const meta = strings.en.meta;
         <h2 class="mb-3 text-2xl">2. What we collect</h2>
         <p class="mb-4">
           The Software sends only the following <strong>minimal, anonymous</strong>
-          telemetry, and only if the user explicitly opts in from settings.
-          It is OFF by default.
+          telemetry events, and only if the user explicitly opts in from
+          settings. It is OFF by default.
         </p>
         <ul class="list-disc space-y-2 pl-6">
           <li>
-            <code>crash</code> — on application crash.
-            Fields: SHA-256 hash of the stack trace, version number only.
+            <code>install</code> — once on first launch.
+            Fields: random UUID install ID, version, OS (one of
+            <code>linux</code> / <code>mac</code> / <code>ios</code> /
+            <code>unknown</code>).
+          </li>
+          <li>
+            <code>session_start</code> — once each time the browser launches.
+            Fields: install ID, version.
+          </li>
+          <li>
+            <code>heartbeat</code> — at most once per UTC day during use.
+            Fields: install ID, version.
+          </li>
+          <li>
+            <code>feature_used</code> — bucket counter when a fixed-allowlist
+            feature is invoked (~20 named features).
+            Fields: install ID, version, feature name.
           </li>
           <li>
             <code>agent_run</code> — when an Agent run completes.
-            Fields: success (boolean), step count, termination reason enum,
-            version number only.
+            Fields: install ID, version, success (boolean), step count,
+            termination reason enum.
+          </li>
+          <li>
+            <code>crash</code> — on application crash.
+            Fields: install ID, version, SHA-256 hash of the stack trace.
           </li>
         </ul>
         <p class="mt-4">
+          The install ID is a random UUID generated locally and is not
+          joined with any other identifier (IP, time, account) on the server.
           Events are received by our Cloudflare Worker, which is isolated in
           a <strong>separate Cloudflare account</strong> from any user-data
           infrastructure. IP addresses are discarded at the edge; only the
-          two-letter <code>CF-IPCountry</code> code is kept.
+          two-letter <code>CF-IPCountry</code> code is kept. The full event
+          schema is fixed by spec and enforced by an automated allowlist.
         </p>
       </div>
 
