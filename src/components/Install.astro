@@ -49,13 +49,13 @@ sudo apt install ./zeed-browser_147.0.7727.55.49-1_amd64.deb</code></pre>
         >{s.macBetaBadge}</span>
       </div>
       <p class="mb-3 text-sm" style="color: var(--color-zeed-muted)">{s.macDescription}</p>
-      <a
-        href="mailto:support@efg-technologies.com?subject=Zeed%20Mac%20beta%20access"
-        class="mb-3 inline-block rounded-lg px-4 py-2 text-sm font-medium"
-        style="background: var(--color-zeed-accent, #5b21b6); color: white"
-      >
-        {s.macRequestCta} →
-      </a>
+
+      <p class="mb-2 text-sm" style="color: var(--color-zeed-muted)">{s.macBrewLabel}</p>
+      <pre class="mb-4"><code>brew install --cask efg-technologies/zeed/zeed</code></pre>
+
+      <p class="mb-2 text-sm" style="color: var(--color-zeed-muted)">{s.macManualLabel}</p>
+      <pre class="mb-2"><code>curl -LO https://github.com/efg-technologies/zeed-browser-dist/releases/latest/download/zeed-147.0.7727.55.49-mac-arm64.dmg
+xattr -dr com.apple.quarantine /Applications/Zeed\ Browser.app</code></pre>
       <p class="text-xs" style="color: var(--color-zeed-muted)">
         {s.macQuarantineNote}
       </p>

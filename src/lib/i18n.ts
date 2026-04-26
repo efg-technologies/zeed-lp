@@ -90,7 +90,8 @@ type StringTable = {
     macTitle: string;
     macBetaBadge: string;
     macDescription: string;
-    macRequestCta: string;
+    macBrewLabel: string;
+    macManualLabel: string;
     macQuarantineNote: string;
     firstRun: string;
     issuesLink: string;
@@ -251,10 +252,11 @@ const en: StringTable = {
     debLabel: "Grab the latest .deb and install:",
     debAptNote: "GPG-signed APT repo (apt-get install zeed-browser) is in progress.",
     macTitle: "macOS (Apple Silicon)",
-    macBetaBadge: "Private beta",
-    macDescription: "Apple Developer signing is still in progress (D-U-N-S pending), so the macOS build is shared by request only. Email us and we'll send you the unsigned .dmg + Gatekeeper instructions.",
-    macRequestCta: "Request beta access",
-    macQuarantineNote: "(Once you have the .dmg, mount it, copy Zeed to /Applications, then run xattr -dr com.apple.quarantine on the .app to clear the quarantine flag.)",
+    macBetaBadge: "Unsigned beta",
+    macDescription: "Apple Developer signing is still in progress (D-U-N-S pending). Until then, install via Homebrew tap — the cask auto-removes the Gatekeeper quarantine xattr for you.",
+    macBrewLabel: "Homebrew (recommended):",
+    macManualLabel: "Or manual .dmg + quarantine bypass:",
+    macQuarantineNote: "Apple Silicon (arm64) only for now. Universal binary lands after notarization.",
     firstRun: "On first launch, paste your OpenRouter API key. That’s it.",
     issuesLink: "Email feedback",
   },
@@ -446,10 +448,11 @@ const ja: StringTable = {
     debLabel: "最新 release から .deb を取得してインストール:",
     debAptNote: "GPG 署名付き APT repo (apt-get install zeed-browser) は準備中。",
     macTitle: "macOS (Apple Silicon)",
-    macBetaBadge: "プライベート beta",
-    macDescription: "Apple Developer 署名は準備中 (D-U-N-S 申請中) のため、現状 macOS ビルドは個別配布です。メールでご連絡いただければ、未署名の .dmg と Gatekeeper 解除手順をお送りします。",
-    macRequestCta: "beta アクセスをリクエスト",
-    macQuarantineNote: "(.dmg を受け取ったら、マウントして Zeed を /Applications にコピー後、xattr -dr com.apple.quarantine を .app に実行して quarantine を外してください。)",
+    macBetaBadge: "未署名 beta",
+    macDescription: "Apple Developer 署名は準備中 (D-U-N-S 申請中)。それまでは Homebrew tap 経由のインストールが推奨です — cask が Gatekeeper quarantine の自動解除も行います。",
+    macBrewLabel: "Homebrew (推奨):",
+    macManualLabel: ".dmg 直 DL + quarantine 解除:",
+    macQuarantineNote: "現状は Apple Silicon (arm64) のみ。Universal binary は notarize 完了後に対応。",
     firstRun: "初回起動時に OpenRouter API key を貼るだけ。",
     issuesLink: "メールでフィードバック",
   },
